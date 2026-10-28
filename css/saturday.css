@@ -88,6 +88,9 @@ section{position:relative;padding:clamp(72px,11vw,150px) 0}
 @keyframes pad{50%{opacity:.5;transform:translateX(-50%) scale(.8)}}
 .hero h1{margin:6px 0 18px;width:min(88vw,820px)}
 .hero h1 img{width:100%;height:auto;filter:drop-shadow(0 0 24px rgba(143,227,224,.28))}
+.hero h1.hero-logo{width:min(88vw,720px)}
+.hero h1.hero-logo picture{display:block}
+.hero h1.hero-logo img{display:block;filter:drop-shadow(0 6px 22px rgba(0,0,0,.45))}
 .wm-shimmer{position:relative;display:block}
 .wm-shimmer:after{content:"";position:absolute;inset:0;pointer-events:none;-webkit-mask:url(../assets/saturday-wordmark-gold.svg) center/100% 100% no-repeat;mask:url(../assets/saturday-wordmark-gold.svg) center/100% 100% no-repeat;
   background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.85) 48%,rgba(143,227,224,.6) 52%,transparent 62%);background-size:260% 100%;animation:sheen 5.5s ease-in-out infinite 1s;mix-blend-mode:overlay}
