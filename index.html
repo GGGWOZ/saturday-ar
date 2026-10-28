@@ -1,54 +1,483 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Saturday AR Experience — Hologram Drop · View in AR</title>
-<meta name="description" content="Scan. Summon. Saturday. A holographic alien from the Saturday hemp collection, floating in your space — no app needed.">
-<meta name="theme-color" content="#07041a">
-<meta property="og:title" content="Saturday AR Experience — Hologram Drop">
-<meta property="og:description" content="Summon the Saturday alien into your space. No app needed.">
-<meta property="og:image" content="target/saturday-alien-tattoo-target-512.jpg">
+<title>Saturday — Where the surf meets the sky · Gold Coast, Australia</title>
+<meta name="description" content="Saturday is a sports and adventure label from the Gold Coast, Australia. Surf to snow, tailored and a little otherworldly. Where the surf meets the sky.">
+<meta name="theme-color" content="#0B1020">
+<meta property="og:title" content="Saturday — Where the surf meets the sky">
+<meta property="og:description" content="A Gold Coast sports and adventure label. Not entirely from around here.">
+<meta property="og:image" content="assets/img/saturday-hero-banner-008.jpg">
 <link rel="icon" type="image/svg+xml" href="assets/saturday-alien-mark.svg">
+<link rel="preload" href="assets/fonts/saturday-pirata-one.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/saturday-space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/saturday.css">
+<link rel="stylesheet" href="css/saturday-free-experience.css">
+<script>document.documentElement.classList.add('js')</script>
 <script type="module" src="vendor/model-viewer.min.js"></script>
-<link rel="stylesheet" href="css/saturday-ar-experience.css">
 </head>
 <body>
-<div class="sky"></div><div class="stars"></div>
-<svg class="waves" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 70 Q75 20 150 70 T300 70 T450 70 T600 70 T750 70 T900 70 T1050 70 T1200 70 V120 H0Z" fill="#0b6c7d"/><path d="M0 90 Q75 50 150 90 T300 90 T450 90 T600 90 T750 90 T900 90 T1050 90 T1200 90 V120 H0Z" fill="#04394a"/></svg>
-<main>
-  <header><div class="tag">Gold Coast · Hemp</div><div class="badge">Hologram drop 01</div></header>
-  <h1 class="wordmark">Saturday<span class="sr"> AR Experience</span></h1>
-  <p class="exp">Saturday AR Experience</p>
-  <span class="banner">Where the ocean meets the sky</span>
+<a class="skip" href="#main">Skip to content</a>
+<div class="sky" aria-hidden="true"></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
 
-  <div class="stage">
-    <span class="corner tl">Specimen 0601</span><span class="corner tr">● Live</span>
-    <model-viewer id="mv"
-      src="models/saturday-alien.glb"
-      ios-src="models/saturday-alien.usdz"
-      alt="A holographic Saturday alien head with a gold halo and orbiting neon ring, floating above a hologram projector"
-      ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" ar-placement="floor"
-      camera-controls touch-action="pan-y" auto-rotate auto-rotate-delay="2500" rotation-per-second="18deg"
-      autoplay animation-name="HoloDance"
-      camera-orbit="0deg 78deg 118%" field-of-view="30deg" min-camera-orbit="auto auto 0.8m"
-      shadow-intensity="1.2" shadow-softness="0.8" exposure="1.15" environment-image="neutral" tone-mapping="neutral"
-      interaction-prompt="none">
-      <button slot="ar-button" class="ar-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
-        View in your space
-      </button>
-    </model-viewer>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Saturday — back to top">
+      <img src="assets/saturday-alien-mark-transparent.svg" alt="" width="30" height="34">
+      <img class="wm" src="assets/saturday-wordmark-gold.svg" alt="Saturday" width="84" height="26">
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#arrival">Arrival</a></li>
+        <li><a href="shirt-008.html">008</a></li>
+        <li><a href="#ar-qr">Summon the hologram</a></li>
+        <li><a href="#drop-001">Drop 001</a></li>
+        <li><a href="free-drop.html">Free Drop</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-ghost" href="#list">Join the list</a>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-bg" aria-hidden="true">
+      <picture><source srcset="assets/img/saturday-hero-banner-008.webp" type="image/webp"><img src="assets/img/saturday-hero-banner-008.jpg" alt="" width="1280" height="720" fetchpriority="high"></picture>
+    </div>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="scan" aria-hidden="true"></div>
+    <span class="corner tl"><span class="dot"></span>Signal · Gold Coast</span>
+    <span class="corner tr">Specimen 0601</span>
+    <span class="corner bl">28°S · 153°E</span>
+    <span class="corner br">Est. Gold Coast, Australia</span>
+    <div class="hero-inner">
+      <div class="mark-wrap"><img class="mark" src="assets/saturday-alien-mark-transparent.svg" alt="" width="210" height="230"></div>
+      <h1 id="hero-title"><span class="wm-shimmer"><img src="assets/saturday-wordmark.svg" alt="Saturday" width="820" height="265"></span></h1>
+      <p class="banner">Where the surf meets the sky.</p>
+      <p class="sub">A sports and adventure label from the Gold Coast. Cut like a getaway car, loud like an encore, and not entirely from around here.</p>
+      <div class="cta-row">
+        <a class="btn btn-holo" href="#hologram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
+          Summon the hologram</a>
+        <a class="btn btn-ghost" href="#list">Get on the list</a>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Surf</span><span class="g">✦</span><span>Sky</span><span class="t">✦</span><span>Snow</span><span class="g">✦</span><span>Saturday</span><span class="t">✦</span><span>Gold Coast</span><span class="g">✦</span><span>Arrived early</span><span class="t">✦</span>
+      <span>Surf</span><span class="g">✦</span><span>Sky</span><span class="t">✦</span><span>Snow</span><span class="g">✦</span><span>Saturday</span><span class="t">✦</span><span>Gold Coast</span><span class="g">✦</span><span>Arrived early</span><span class="t">✦</span>
+    </div>
   </div>
 
-  <p class="copy">Tap <b>View in your space</b> and point your phone at the floor — the Saturday alien beams in, floats and dances right where you're standing. No app. Just vibes.</p>
-  <div class="row">
-    <a class="btn2 hot" href="saturday-shirt-mode.html">Shirt mode · beta</a>
-    <a class="btn2" id="shop" href="#" rel="noopener">Shop the shirt</a>
-  </div>
-  <p class="note">AR needs a phone — scan the QR code on your Saturday tag with your iPhone or Android camera. You can still spin the alien here.</p>
-  <footer>Saturday · <span>Hemp</span> · Est. Gold Coast</footer>
+  <!-- ARRIVAL -->
+  <section class="arrival" id="arrival" aria-labelledby="arrival-title">
+    <div class="wrap grid">
+      <div class="rv">
+        <span class="eyebrow">Chapter 01 · The Arrival</span>
+        <h2 class="h2" id="arrival-title"><span class="holo-text">He came for the waves. Stayed for the weekend.</span></h2>
+        <p class="lede">Nobody saw the landing. Somewhere off the Gold Coast at first light the water went glassy, the sky went gold, and something tall and impeccably dressed walked out of the swell like it had a reservation.</p>
+        <p class="lede">Saturday is what he left behind: a label for blokes who would rather be <strong>remembered</strong> than recognised. Pressed, never stressed. Front row, never front desk.</p>
+        <ul class="codes">
+          <li><span class="n">No.1</span><div><h3>Tailored</h3><p>Clean lines, sharp collars. Move like you've got somewhere better to be. You do.</p></div></li>
+          <li><span class="n">No.2</span><div><h3>Loud</h3><p>Strut first, soundcheck later. Tattoo-flash art, gold on navy, zero apologies.</p></div></li>
+          <li><span class="n">No.3</span><div><h3>Otherworldly</h3><p>Holographic by nature, local by choice. Visiting from somewhere cooler than you.</p></div></li>
+        </ul>
+      </div>
+      <div class="art rv">
+        <div class="sticker" aria-hidden="true">Not from<br>around<br>here</div>
+        <a class="frame" href="shirt-008.html" aria-label="008, hemp camp collar shirt: see the shirt">
+          <span class="tag">Field report · 008</span><span class="tag r">● Sighted</span>
+          <img src="assets/img/saturday-008-shirt-surf.webp" alt="008: a navy hemp camp-collar shirt with a large back print of a tuxedoed alien holding a surfboard and microphone, worn on a Gold Coast beach at dusk" width="864" height="1152" loading="lazy">
+        </a>
+        <span class="banner">008 · Hemp Camp Collar</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOUR FIELD -->
+  <section class="field" aria-labelledby="field-title">
+    <div class="grid">
+      <video id="cf" src="assets/video/saturday-wordmark-colourfield.mp4" poster="assets/video/colourfield-poster.webp" muted loop playsinline preload="metadata" aria-label="Slow colour-field animation in Klein blue, gold and teal, with the word Saturday? in the centre"></video>
+      <div class="copy rv">
+        <span class="eyebrow">Interlude</span>
+        <p class="q" id="field-title">It's not a day.<br><em>It's a question.</em></p>
+        <p class="lede">Blue above, gold below, a thin line of teal where they argue. That's the whole brief. Saturday? Always. The only answer worth giving is <b>yes</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURF & SKI -->
+  <section class="duality" id="surf-ski" aria-labelledby="duality-title">
+    <div class="wrap">
+      <div class="head rv">
+        <span class="eyebrow">Chapter 02 · Multi-terrain</span>
+        <h2 class="h2" id="duality-title"><span class="holo-text">Ocean below. Sky above. You in between.</span></h2>
+        <p class="lede">Beach to snow, salt to powder. One wardrobe, two elevations, zero costume changes.</p>
+      </div>
+      <div class="split">
+        <article class="panel surf rv">
+          <img src="assets/img/saturday-hero-banner-008.webp" alt="Tattoo-style art of the tuxedoed Saturday alien with a surfboard and microphone beside giant waves and a flying saucer" width="1280" height="720" loading="lazy" style="object-position:62% 50%">
+          <div class="in">
+            <span class="k">Sea level · Saltwater</span>
+            <h3>Surf</h3>
+            <p>Dawn patrol, glassy sets, a board under one arm and attitude under the other. Paddle out like the ocean owes you money.</p>
+            <div class="meta"><span>First light</span><span>Point breaks</span><span>Salt hair</span></div>
+          </div>
+        </article>
+        <article class="panel ski rv">
+          <svg class="scene" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e1430"/><stop offset=".6" stop-color="#1d2a55"/><stop offset="1" stop-color="#2a3a6a"/></linearGradient>
+              <linearGradient id="ridge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3D58A"/><stop offset=".5" stop-color="#D4A84B"/><stop offset="1" stop-color="#8FE3E0"/></linearGradient>
+              <radialGradient id="moon" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F3D58A"/><stop offset=".6" stop-color="#D4A84B" stop-opacity=".6"/><stop offset="1" stop-color="#D4A84B" stop-opacity="0"/></radialGradient>
+            </defs>
+            <rect width="800" height="900" fill="url(#skyg)"/>
+            <circle cx="590" cy="210" r="120" fill="url(#moon)" opacity=".55"/>
+            <circle cx="590" cy="210" r="52" fill="#F3D58A" opacity=".9"/>
+            <ellipse cx="590" cy="210" rx="96" ry="16" transform="rotate(-14 590 210)" fill="none" stroke="#8FE3E0" stroke-width="2" opacity=".8"/>
+            <path d="M-20 640 L120 470 L190 540 L300 360 L380 470 L450 400 L560 560 L640 480 L820 650 V900 H-20Z" fill="#0B1020" stroke="url(#ridge)" stroke-width="3"/>
+            <path d="M300 360 L270 410 L300 400 L325 430 L345 420 L380 470" fill="none" stroke="#E8FBFA" stroke-width="2.5" opacity=".9"/>
+            <path d="M120 470 L100 500 L125 495 L150 512" fill="none" stroke="#E8FBFA" stroke-width="2" opacity=".85"/>
+            <path d="M-20 760 L160 600 L260 690 L420 560 L560 700 L700 620 L820 720 V900 H-20Z" fill="#121a38" stroke="#8FE3E0" stroke-width="2" opacity=".95"/>
+            <path d="M80 900 C220 820 360 820 470 760 S700 700 820 690" fill="none" stroke="#D4A84B" stroke-width="2" stroke-dasharray="6 10" opacity=".7"/>
+          </svg>
+          <div class="snow" aria-hidden="true"></div>
+          <div class="in">
+            <span class="k">Altitude · Powder</span>
+            <h3>Ski</h3>
+            <p>Same swagger, thinner air. Gold Coast warmth, taken to the cold side of the planet and worn like it was always the plan.</p>
+            <div class="meta"><span>First chair</span><span>Fresh tracks</span><span>Après</span></div>
+          </div>
+        </article>
+      </div>
+      <p class="horizon rv">Where the surf meets the sky</p>
+    </div>
+  </section>
+
+  <!-- HOLOGRAM / AR -->
+  <section class="holo-sec" id="hologram" aria-labelledby="holo-title">
+    <div class="wrap grid">
+      <div class="rv">
+        <span class="eyebrow">Chapter 03 · Saturday AR Experience</span>
+        <h2 class="h2" id="holo-title"><span class="holo-text">Summon the hologram.</span></h2>
+        <p class="lede">Our alien doesn't do photos. He does <b>appearances</b>. Beam him onto this page, give him a spin, then, on your phone, put him in your living room. No app. Just vibes.</p>
+        <div class="specimens" role="group" aria-label="Choose a specimen">
+          <button class="chip" type="button" aria-pressed="true" data-src="assets/models/saturday-alien.glb" data-ios="assets/models/saturday-alien.usdz" data-anim="HoloDance" data-label="Specimen 0601" data-alt="A holographic Saturday alien head with a gold halo and orbiting ring, floating above a hologram projector">The Alien</button>
+          <button class="chip" type="button" aria-pressed="false" data-src="assets/models/saturday-frontman.glb" data-ios="assets/models/saturday-frontman.usdz" data-anim="SuaveIdle" data-label="The Frontman" data-alt="The Saturday Frontman: a slim chrome-visored figure in a navy suit with gold and teal trim, standing on a glowing pad">The Frontman</button>
+        </div>
+        <button class="btn btn-holo" id="summon" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
+          <span>Summon the hologram</span></button>
+        <p class="fine" id="ar-note">On a phone, tap <b>View in your space</b> once he's here. On desktop you can drag to spin him.</p>
+      </div>
+      <div class="rv">
+        <div class="stage" id="stage">
+          <span class="corner tl" id="spec-label">Specimen 0601</span><span class="corner tr" id="spec-status">○ Dormant</span>
+          <div class="dormant" aria-hidden="true">
+            <div class="beam"></div><div class="pad-ring"></div>
+            <img src="assets/saturday-alien-mark-transparent.svg" alt="" width="200" height="220">
+          </div>
+          <model-viewer id="mv"
+            alt="A holographic Saturday alien head with a gold halo and orbiting ring, floating above a hologram projector"
+            ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" ar-placement="floor"
+            camera-controls touch-action="pan-y" auto-rotate auto-rotate-delay="2500" rotation-per-second="18deg"
+            autoplay camera-orbit="0deg 78deg 118%" field-of-view="30deg"
+            shadow-intensity="1.2" shadow-softness="0.8" exposure="1.15" environment-image="neutral" tone-mapping="neutral"
+            interaction-prompt="none">
+            <button slot="ar-button" class="btn btn-holo ar-slot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
+              View in your space</button>
+          </model-viewer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AR + QR -->
+  <section class="arqr" id="ar-qr" aria-labelledby="arqr-title">
+    <div class="wrap"><div class="box rv">
+      <div>
+        <span class="eyebrow">Saturday AR Experience</span>
+        <h2 class="h2" id="arqr-title"><span class="holo-text">Scan it. Summon the hologram.</span></h2>
+        <p class="lede">Point your phone camera at the code. The Saturday AR Experience opens in your browser and the alien beams into your room, floating, dancing, life-size-ish. No app. Just vibes.</p>
+        <ol class="steps">
+          <li><span><b>Scan</b> the code with your iPhone or Android camera.</span></li>
+          <li><span><b>Tap</b> "View in your space" and aim at the floor.</span></li>
+          <li><span><b>Summon</b> him. Walk around him. He doesn't mind.</span></li>
+        </ol>
+        <div class="cta-row" style="justify-content:flex-start">
+          <a class="btn btn-holo" href="https://saturdayforthewin.com/ar/" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
+            Open the AR Experience</a>
+          <a class="btn btn-ghost" href="https://saturdayforthewin.com/ar/saturday-shirt-mode.html" rel="noopener">Shirt mode · beta</a>
+          <a class="btn btn-ghost" href="free-drop.html#qr-maker">Make your own QR</a>
+        </div>
+        <p class="fine">Want to wear the code? <a href="shirt-008.html#qr">008 QR</a> is a plain navy hemp camp collar with this code on the back. Pre-order soon.</p>
+        <p class="fine">On desktop? Spin him right here in the <a href="#hologram">hologram viewer</a>, or open the <a href="ar/index.html">offline copy</a>.</p>
+      </div>
+      <a class="qr-card" href="https://saturdayforthewin.com/ar/" rel="noopener" style="text-decoration:none">
+        <img src="assets/qr/saturday-ar-qr.svg" alt="Saturday QR code that opens the Saturday AR Experience at saturdayforthewin.com/ar" width="1024" height="1024">
+        <p class="cap">Scan · Summon the hologram</p><p class="url">saturdayforthewin.com/ar/</p>
+      </a>
+    </div></div>
+  </section>
+
+  <!-- DROP 001 -->
+  <section class="drop" id="drop-001" aria-labelledby="drop-title">
+    <div class="wrap">
+      <div class="top rv">
+        <div>
+          <span class="eyebrow">Chapter 04 · Classified</span>
+          <h2 class="h2" id="drop-title"><span class="holo-text">Drop 001</span></h2>
+          <p class="lede">A first look at the art. Tattoo flash, gold chains and a few things that fell out of the sky. Details are classified until the hatch opens.</p>
+        </div>
+        <span class="count">✦ Incoming ✦</span>
+      </div>
+      <div class="cards">
+        <a class="card rv feature" href="shirt-008.html"><span class="no">008</span><img src="assets/img/saturday-008-shirt-surf.webp" alt="008: navy hemp camp-collar shirt with a back print of a tuxedoed alien surfer holding a gold microphone, worn on the beach at dusk" width="864" height="1152" loading="lazy"><span class="lbl"><b>008</b><small>Hemp camp collar · Pre-order soon</small></span></a>
+        <figure class="card rv"><span class="no">✦</span><img src="assets/img/art-900-summers.webp" alt="Tattoo-style art of a gold-haloed alien surfer rising from waves before a fan of surfboards" width="864" height="1152" loading="lazy"><figcaption class="lbl"><b>Nine Hundred Summers</b><small>Art preview</small></figcaption></figure>
+        <figure class="card rv"><span class="no">✦</span><img src="assets/img/art-maxing.webp" alt="Minimal gold and teal line art of a luminous alien silhouette on navy" width="864" height="1152" loading="lazy"><figcaption class="lbl"><b>Maxing</b><small>Art preview</small></figcaption></figure>
+        <a class="card rv" href="shirt-008.html#qr"><span class="no">008</span><img src="assets/img/saturday-008-qr-shirt-flatlay.webp" alt="008 QR: plain navy hemp camp-collar shirt with a gold QR code on the back that opens the Saturday AR Experience" width="768" height="1024" loading="lazy"><span class="lbl"><b>008 QR</b><small>Pre-order soon</small></span></a>
+        <figure class="card rv"><span class="no">✦</span><img src="assets/img/koi-skyline-surf.webp" alt="A man with a surfboard and boombox on a pier at night, wearing a black koi and alien shirt" width="864" height="1152" loading="lazy"><figcaption class="lbl"><b>Koi Skyline</b><small>Sighting</small></figcaption></figure>
+        <figure class="card rv"><span class="no">✦</span><img src="assets/img/alien-rose-surf.webp" alt="A cream camp shirt printed with an alien, roses and a dagger, worn on the sand" width="864" height="1152" loading="lazy"><figcaption class="lbl"><b>Alien Rose</b><small>Sighting</small></figcaption></figure>
+        <figure class="card rv"><span class="no">✦</span><img src="assets/img/gold-chains.webp" alt="Two gold chains resting on dark iridescent fabric" width="900" height="900" loading="lazy"><figcaption class="lbl"><b>Gold Chains</b><small>Sighting</small></figcaption></figure>
+        <figure class="card rv"><span class="no">✦</span><img src="assets/img/hoodie-frontman.webp" alt="Navy hoodie mockup with a tattoo-flash print of the Saturday Frontman" width="900" height="900" loading="lazy"><figcaption class="lbl"><b>The Frontman</b><small>Mockup</small></figcaption></figure>
+        <figure class="card rv"><span class="no">✦</span><img src="assets/img/sticker-pack.webp" alt="Holographic Saturday sticker sheet with the alien, the Frontman and the wordmark" width="900" height="900" loading="lazy"><figcaption class="lbl"><b>Holo Stickers</b><small>Mockup</small></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+<!-- FX:START (generated by /workspace/saturday-site-tools/fx_build.py) -->
+  <section class="fx" id="free" aria-labelledby="fx-title" data-fx>
+    <div class="wrap fx-head">
+      <span class="eyebrow">Free Drop · No catch · No checkout</span>
+      <h2 class="fx-title" id="fx-title" aria-label="Free. Drop. Take something home.">
+        <span class="fx-line" aria-hidden="true"><span class="ch" style="--i:0;--j:0;--n:5">F</span><span class="ch" style="--i:1;--j:1;--n:5">R</span><span class="ch" style="--i:2;--j:2;--n:5">E</span><span class="ch" style="--i:3;--j:3;--n:5">E</span><span class="ch" style="--i:4;--j:4;--n:5">.</span></span>
+        <span class="fx-line" aria-hidden="true"><span class="ch" style="--i:5;--j:0;--n:5">D</span><span class="ch" style="--i:6;--j:1;--n:5">R</span><span class="ch" style="--i:7;--j:2;--n:5">O</span><span class="ch" style="--i:8;--j:3;--n:5">P</span><span class="ch" style="--i:9;--j:4;--n:5">.</span></span>
+      </h2>
+      <p class="fx-sub">Take something home. Wallpapers, stickers, printable sheets and a QR that summons a hologram. All free, no email needed.</p>
+      <div class="cta-row fx-cta"><a class="btn btn-holo" href="free-drop.html">Enter the Free Drop hub</a><a class="btn btn-ghost" href="#fx-toy">Play with stickers</a></div>
+    </div>
+    <div class="fx-marquee" aria-hidden="true"><div class="fx-mtrack"><span>Take something home</span><span class="g">✦</span><span>Wallpapers</span><span class="t">✦</span><span>Stickers</span><span class="g">✦</span><span>QR codes</span><span class="t">✦</span><span>No catch</span><span class="g">✦</span><span>Take something home</span><span class="g">✦</span><span>Wallpapers</span><span class="t">✦</span><span>Stickers</span><span class="g">✦</span><span>QR codes</span><span class="t">✦</span><span>No catch</span><span class="g">✦</span></div></div>
+
+    <div class="fx-seq" data-fx-seq>
+      <div class="fx-pin">
+        <div class="wrap fx-seq-grid">
+          <ol class="fx-steps">
+            <li style="--s:var(--s1)"><b>01</b><span>A wallpaper lands on your desk.</span></li>
+            <li style="--s:var(--s2)"><b>02</b><span>Your phone gets a new night sky.</span></li>
+            <li style="--s:var(--s3)"><b>03</b><span>Stickers peel onto the laptop.</span></li>
+            <li style="--s:var(--s4)"><b>04</b><span>The QR lands last. Scan it, summon him.</span></li>
+          </ol>
+          <div class="fx-scene" aria-hidden="true">
+            <div class="fx-monitor"><div class="fx-screen"><img class="fx-wall" src="assets/free/thumbs/saturday-wallpaper-desktop-hologram.webp" alt="" loading="lazy"></div><span class="fx-stand"></span></div>
+            <div class="fx-phone"><div class="fx-pscreen"><img class="fx-pwall" src="assets/free/thumbs/saturday-phone-008.webp" alt="" loading="lazy"></div></div>
+            <div class="fx-laptop">
+              <img class="fx-lid" src="assets/free/toy/saturday-toy-laptop.svg" alt="" loading="lazy">
+              <img class="fx-st" style="--k:0;--x:24%;--y:36%;--w:24%;--r:-12deg" src="assets/free/toy/saturday-toy-alien-mark-gold.webp" alt="" loading="lazy">
+              <img class="fx-st" style="--k:1;--x:52%;--y:30%;--w:30%;--r:6deg" src="assets/free/toy/saturday-toy-wordmark-gold.webp" alt="" loading="lazy">
+              <img class="fx-st" style="--k:2;--x:40%;--y:55%;--w:24%;--r:-4deg" src="assets/free/toy/saturday-toy-alien-badge.webp" alt="" loading="lazy">
+              <img class="fx-st" style="--k:3;--x:40%;--y:68%;--w:40%;--r:-6deg" src="assets/free/toy/saturday-toy-tagline-ribbon.webp" alt="" loading="lazy">
+              <img class="fx-qr" src="assets/free/toy/saturday-toy-ar-qr.webp" alt="" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="fx-row-head"><h3 class="sub-h holo-text">Pick a souvenir.</h3><p class="sub-p">Hover or tap a card to unveil it. Take what you like.</p></div>
+      <div class="fx-cards" data-fx-cards><article class="fx-card fx-k-wall" style="--d:0">
+        <div class="fx-inner">
+          <button class="fx-face fx-front" type="button" aria-expanded="false" aria-controls="fx-back-0">
+            <span class="fx-cover"><img src="assets/free/thumbs/saturday-wallpaper-desktop-hologram.webp" alt="" loading="lazy" width="720" height="405"></span>
+            <span class="fx-foil" aria-hidden="true"></span>
+            <span class="fx-meta"><small>Desktop wallpaper</small><b>Hologram</b><em>Unveil <span aria-hidden="true">↻</span></em></span>
+          </button>
+          <div class="fx-face fx-back" id="fx-back-0" inert>
+            <img src="assets/free/thumbs/saturday-wallpaper-desktop-hologram.webp" alt="The glowing alien mark in a navy star field" loading="lazy">
+            <div class="fx-back-meta"><b>Hologram</b><small>2560 × 1440 JPG · 280 KB</small>
+              <a class="btn btn-holo" href="assets/free/saturday-wallpaper-desktop-hologram.jpg" download>Take it</a>
+              <button class="fx-close" type="button">Flip back</button></div>
+          </div>
+        </div>
+      </article><article class="fx-card fx-k-phone" style="--d:1">
+        <div class="fx-inner">
+          <button class="fx-face fx-front" type="button" aria-expanded="false" aria-controls="fx-back-1">
+            <span class="fx-cover"><img src="assets/free/thumbs/saturday-phone-008.webp" alt="" loading="lazy" width="720" height="405"></span>
+            <span class="fx-foil" aria-hidden="true"></span>
+            <span class="fx-meta"><small>Phone background</small><b>008</b><em>Unveil <span aria-hidden="true">↻</span></em></span>
+          </button>
+          <div class="fx-face fx-back" id="fx-back-1" inert>
+            <img src="assets/free/thumbs/saturday-phone-008.webp" alt="The 008 art under the Saturday wordmark" loading="lazy">
+            <div class="fx-back-meta"><b>008</b><small>1290 × 2796 JPG · 608 KB</small>
+              <a class="btn btn-holo" href="assets/free/saturday-phone-008.jpg" download>Take it</a>
+              <button class="fx-close" type="button">Flip back</button></div>
+          </div>
+        </div>
+      </article><article class="fx-card fx-k-sticker" style="--d:2">
+        <div class="fx-inner">
+          <button class="fx-face fx-front" type="button" aria-expanded="false" aria-controls="fx-back-2">
+            <span class="fx-cover"><img src="assets/free/thumbs/saturday-sticker-alien-mark-gold.webp" alt="" loading="lazy" width="720" height="405"></span>
+            <span class="fx-foil" aria-hidden="true"></span>
+            <span class="fx-meta"><small>Die-cut sticker</small><b>Alien mark · gold</b><em>Unveil <span aria-hidden="true">↻</span></em></span>
+          </button>
+          <div class="fx-face fx-back" id="fx-back-2" inert>
+            <img src="assets/free/thumbs/saturday-sticker-alien-mark-gold.webp" alt="Alien mark sticker with a gold edge" loading="lazy">
+            <div class="fx-back-meta"><b>Alien mark · gold</b><small>Transparent PNG · 376 KB</small>
+              <a class="btn btn-holo" href="assets/free/saturday-sticker-alien-mark-gold.png" download>Take it</a>
+              <button class="fx-close" type="button">Flip back</button></div>
+          </div>
+        </div>
+      </article><article class="fx-card fx-k-wall" style="--d:3">
+        <div class="fx-inner">
+          <button class="fx-face fx-front" type="button" aria-expanded="false" aria-controls="fx-back-3">
+            <span class="fx-cover"><img src="assets/free/thumbs/saturday-wallpaper-desktop-colour-field.webp" alt="" loading="lazy" width="720" height="405"></span>
+            <span class="fx-foil" aria-hidden="true"></span>
+            <span class="fx-meta"><small>Desktop wallpaper</small><b>Colour Field</b><em>Unveil <span aria-hidden="true">↻</span></em></span>
+          </button>
+          <div class="fx-face fx-back" id="fx-back-3" inert>
+            <img src="assets/free/thumbs/saturday-wallpaper-desktop-colour-field.webp" alt="Klein blue over gold with the gold wordmark" loading="lazy">
+            <div class="fx-back-meta"><b>Colour Field</b><small>2560 × 1440 JPG · 136 KB</small>
+              <a class="btn btn-holo" href="assets/free/saturday-wallpaper-desktop-colour-field.jpg" download>Take it</a>
+              <button class="fx-close" type="button">Flip back</button></div>
+          </div>
+        </div>
+      </article><article class="fx-card fx-k-sheet" style="--d:4">
+        <div class="fx-inner">
+          <button class="fx-face fx-front" type="button" aria-expanded="false" aria-controls="fx-back-4">
+            <span class="fx-cover"><img src="assets/free/thumbs/saturday-sticker-sheet-transparent.webp" alt="" loading="lazy" width="720" height="405"></span>
+            <span class="fx-foil" aria-hidden="true"></span>
+            <span class="fx-meta"><small>Printable sheet</small><b>Sticker sheet A4</b><em>Unveil <span aria-hidden="true">↻</span></em></span>
+          </button>
+          <div class="fx-face fx-back" id="fx-back-4" inert>
+            <img src="assets/free/thumbs/saturday-sticker-sheet-transparent.webp" alt="Seven Saturday stickers on an A4 sheet with cut guides" loading="lazy">
+            <div class="fx-back-meta"><b>Sticker sheet A4</b><small>PDF · 300 dpi · 512 KB</small>
+              <a class="btn btn-holo" href="assets/free/saturday-sticker-sheet-a4.pdf" download>Take it</a>
+              <button class="fx-close" type="button">Flip back</button></div>
+          </div>
+        </div>
+      </article><article class="fx-card fx-k-qr" style="--d:5">
+        <div class="fx-inner">
+          <button class="fx-face fx-front" type="button" aria-expanded="false" aria-controls="fx-back-5">
+            <span class="fx-cover"><img src="assets/free/thumbs/saturday-ar-qr-sticker-sheet-a4.webp" alt="" loading="lazy" width="720" height="405"></span>
+            <span class="fx-foil" aria-hidden="true"></span>
+            <span class="fx-meta"><small>QR stickers</small><b>Scan · Summon</b><em>Unveil <span aria-hidden="true">↻</span></em></span>
+          </button>
+          <div class="fx-face fx-back" id="fx-back-5" inert>
+            <img src="assets/free/thumbs/saturday-ar-qr-sticker-sheet-a4.webp" alt="Twelve QR stickers that open the Saturday AR Experience" loading="lazy">
+            <div class="fx-back-meta"><b>Scan · Summon</b><small>PDF · A4 · 12 stickers · 1.1 MB</small>
+              <a class="btn btn-holo" href="assets/free/saturday-ar-qr-sticker-sheet-a4.pdf" download>Take it</a>
+              <button class="fx-close" type="button">Flip back</button></div>
+          </div>
+        </div>
+      </article></div>
+
+      <div class="fx-toy" id="fx-toy" data-fx-toy>
+        <div class="fx-toy-copy">
+          <h3 class="sub-h holo-text">Stick it anywhere.</h3>
+          <p class="sub-p">Drag stickers onto the board, or pick one and click (or press Enter) to stick it. Then download your board.</p>
+          <div class="toy-bases" role="group" aria-label="Choose what to sticker">
+            <button type="button" class="chip" data-base="surfboard" aria-pressed="true">Surfboard</button>
+            <button type="button" class="chip" data-base="laptop" aria-pressed="false">Laptop</button>
+            <button type="button" class="chip" data-base="phone" aria-pressed="false">Phone</button>
+          </div>
+          <ul class="toy-palette" aria-label="Stickers"><li><button type="button" class="toy-pick" data-s="alien-mark-white" data-w="0.26" aria-pressed="false" aria-label="Alien mark, white edge"><img src="assets/free/toy/saturday-toy-alien-mark-white.webp" alt="" draggable="false"></button></li><li><button type="button" class="toy-pick" data-s="alien-mark-gold" data-w="0.26" aria-pressed="false" aria-label="Alien mark, gold edge"><img src="assets/free/toy/saturday-toy-alien-mark-gold.webp" alt="" draggable="false"></button></li><li><button type="button" class="toy-pick" data-s="alien-badge" data-w="0.3" aria-pressed="false" aria-label="Alien badge"><img src="assets/free/toy/saturday-toy-alien-badge.webp" alt="" draggable="false"></button></li><li><button type="button" class="toy-pick" data-s="wordmark-gold" data-w="0.42" aria-pressed="false" aria-label="Saturday wordmark"><img src="assets/free/toy/saturday-toy-wordmark-gold.webp" alt="" draggable="false"></button></li><li><button type="button" class="toy-pick" data-s="008-art" data-w="0.3" aria-pressed="false" aria-label="008 round"><img src="assets/free/toy/saturday-toy-008-art.webp" alt="" draggable="false"></button></li><li><button type="button" class="toy-pick" data-s="tagline-ribbon" data-w="0.5" aria-pressed="false" aria-label="Tagline ribbon"><img src="assets/free/toy/saturday-toy-tagline-ribbon.webp" alt="" draggable="false"></button></li><li><button type="button" class="toy-pick" data-s="ar-qr" data-w="0.28" aria-pressed="false" aria-label="AR QR code"><img src="assets/free/toy/saturday-toy-ar-qr.webp" alt="" draggable="false"></button></li></ul>
+          <div class="toy-tools" role="group" aria-label="Selected sticker">
+            <button type="button" class="chip" data-act="rotL" aria-label="Rotate left">⟲</button>
+            <button type="button" class="chip" data-act="rotR" aria-label="Rotate right">⟳</button>
+            <button type="button" class="chip" data-act="down" aria-label="Smaller">−</button>
+            <button type="button" class="chip" data-act="up" aria-label="Bigger">+</button>
+            <button type="button" class="chip" data-act="del">Remove</button>
+            <button type="button" class="chip" data-act="clear">Clear all</button>
+          </div>
+          <p class="toy-help" id="toy-help" aria-live="polite">Pick a sticker to start.</p>
+          <button type="button" class="btn btn-holo" data-act="export">Download your board (PNG)</button>
+          <p class="hint">Keys: arrows move a placed sticker (Shift for big steps), [ and ] rotate, − and + resize, Delete removes.</p>
+        </div>
+        <div class="toy-stage" tabindex="0" role="application" aria-label="Sticker board. Select a sticker, then press Enter to stick it in the middle, or click where you want it." aria-describedby="toy-help">
+          <img class="toy-base" src="assets/free/toy/saturday-toy-surfboard.svg" alt="" draggable="false">
+          <div class="toy-layer"></div>
+        </div>
+      </div>
+
+      <div class="fx-duo">
+        <div class="fx-qrt" data-fx-qrt>
+          <h3 class="sub-h holo-text">Type. It morphs.</h3>
+          <p class="sub-p">A live Saturday QR. Type any link and watch it rebuild, alien in the middle, error correction level H.</p>
+          <label class="sr" for="qrt-url">Link for the QR teaser</label>
+          <input id="qrt-url" class="qrt-input" type="url" inputmode="url" spellcheck="false" value="https://saturdayforthewin.com/ar/">
+          <div class="qrt-row">
+            <div class="qrt-stage" role="img" aria-label="Live QR code preview"><div class="qrt-a"></div><div class="qrt-b"></div><span class="qrt-pulse" aria-hidden="true"></span><span class="qrt-scan" aria-hidden="true"></span></div>
+            <div class="qrt-side"><button type="button" class="chip" data-qrt-style>Style: Hologram</button>
+              <a class="btn btn-ghost" data-qrt-link href="free-drop.html#qr-maker">Open the full QR maker</a></div>
+          </div>
+        </div>
+        <div class="fx-pack" data-fx-pack>
+          <h3 class="sub-h holo-text">Unbox the Starter Pack.</h3>
+          <p class="sub-p">Everything in one zip. Open the box to see what's inside.</p>
+          <div class="pack-stage">
+            <div class="pack-burst" aria-hidden="true"><i style="--a:0deg;--r:0.82;--c:var(--teal)"></i><i style="--a:15deg;--r:1.0;--c:var(--gold-hi)"></i><i style="--a:30deg;--r:1.18;--c:var(--teal)"></i><i style="--a:45deg;--r:0.82;--c:var(--gold-hi)"></i><i style="--a:60deg;--r:1.0;--c:var(--teal)"></i><i style="--a:75deg;--r:1.18;--c:var(--gold-hi)"></i><i style="--a:90deg;--r:0.82;--c:var(--teal)"></i><i style="--a:105deg;--r:1.0;--c:var(--gold-hi)"></i><i style="--a:120deg;--r:1.18;--c:var(--teal)"></i><i style="--a:135deg;--r:0.82;--c:var(--gold-hi)"></i><i style="--a:150deg;--r:1.0;--c:var(--teal)"></i><i style="--a:165deg;--r:1.18;--c:var(--gold-hi)"></i><i style="--a:180deg;--r:0.82;--c:var(--teal)"></i><i style="--a:195deg;--r:1.0;--c:var(--gold-hi)"></i><i style="--a:210deg;--r:1.18;--c:var(--teal)"></i><i style="--a:225deg;--r:0.82;--c:var(--gold-hi)"></i><i style="--a:240deg;--r:1.0;--c:var(--teal)"></i><i style="--a:255deg;--r:1.18;--c:var(--gold-hi)"></i><i style="--a:270deg;--r:0.82;--c:var(--teal)"></i><i style="--a:285deg;--r:1.0;--c:var(--gold-hi)"></i><i style="--a:300deg;--r:1.18;--c:var(--teal)"></i><i style="--a:315deg;--r:0.82;--c:var(--gold-hi)"></i><i style="--a:330deg;--r:1.0;--c:var(--teal)"></i><i style="--a:345deg;--r:1.18;--c:var(--gold-hi)"></i></div>
+            <ul class="pack-fan" id="pack-fan" aria-label="Starter Pack contents"><li style="--i:0"><img src="assets/free/thumbs/saturday-wallpaper-desktop-008.webp" alt="" loading="lazy"><span>4 wallpapers</span></li><li style="--i:1"><img src="assets/free/thumbs/saturday-phone-hologram.webp" alt="" loading="lazy"><span>4 phone backgrounds</span></li><li style="--i:2"><img src="assets/free/thumbs/saturday-sticker-alien-badge.webp" alt="" loading="lazy"><span>6 stickers</span></li><li style="--i:3"><img src="assets/free/thumbs/saturday-sticker-sheet-transparent.webp" alt="" loading="lazy"><span>Sticker sheets</span></li><li style="--i:4"><img src="assets/free/thumbs/saturday-ar-qr-sticker-sheet-a4.webp" alt="" loading="lazy"><span>QR sticker sheet</span></li><li style="--i:5" class="txt"><b>TXT</b><span>README.txt</span></li></ul>
+            <button type="button" class="pack-box" aria-expanded="false" aria-controls="pack-fan pack-cta">
+              <span class="pack-lid"><img src="assets/saturday-wordmark-gold.svg" alt=""></span>
+              <span class="pack-base"><small>Starter Pack</small><b>Open me</b></span>
+              <span class="sr">Open the Starter Pack</span>
+            </button>
+          </div>
+          <div class="pack-cta" id="pack-cta" hidden>
+            <p class="size">18 files + README.txt · 8.9 MB</p>
+            <a class="btn btn-holo" href="assets/free/saturday-starter-pack.zip" download>Download the Starter Pack (8.9 MB)</a>
+            <button type="button" class="chip" data-repack>Pack it back up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- FX:END -->
+
+  <!-- WAITLIST -->
+  <section class="list" id="list" aria-labelledby="list-title">
+    <div class="wrap">
+      <div class="box rv">
+        <img class="mini" src="assets/saturday-alien-mark-transparent.svg" alt="" width="64" height="70">
+        <span class="eyebrow">The list</span>
+        <h2 class="h2" id="list-title"><span class="holo-text">Be first off the ship.</span></h2>
+        <p class="lede">Drop 001 lands once. Leave your email and you'll hear about it before the rest of the planet does.</p>
+        <form class="form" id="wl" novalidate>
+          <label class="sr" for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@yourplanet.com" required aria-describedby="wl-msg">
+          <button class="btn btn-holo" type="submit">Get on the list</button>
+        </form>
+        <div class="done" role="status" aria-live="polite">
+          <span class="banner">Transmission received</span>
+          <p class="h holo-text">You're on the list.</p>
+          <p class="lede" style="margin:0 auto">Sit tight. We'll signal when Drop 001 lands.</p>
+        </div>
+        <p class="msg" id="wl-msg" aria-live="polite"></p>
+        <p class="preview-note">Preview build: this form is front-end only and doesn't send or store your email anywhere yet.</p>
+      </div>
+    </div>
+  </section>
 </main>
-<script src="js/saturday-ar-experience.js"></script>
+
+<footer>
+  <svg class="waves" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 Q75 0 150 40 T300 40 T450 40 T600 40 T750 40 T900 40 T1050 40 T1200 40 V70 H0Z" fill="#0b6c7d" opacity=".5"/><path d="M0 55 Q75 25 150 55 T300 55 T450 55 T600 55 T750 55 T900 55 T1050 55 T1200 55 V70 H0Z" fill="#0f3a44"/></svg>
+  <div class="wrap">
+    <img class="wm" src="assets/saturday-wordmark.svg" alt="Saturday" width="340" height="110" loading="lazy">
+    <p class="banner">Where the surf meets the sky.</p>
+    <nav class="row" aria-label="Footer"><a href="#arrival">Arrival</a><a href="shirt-008.html">008</a><a href="https://saturdayforthewin.com/ar/" rel="noopener">Saturday AR Experience</a><a href="#drop-001">Drop 001</a><a href="free-drop.html">Free Drop</a><a href="#list">The list</a></nav>
+    <div class="row"><span>Saturday</span><span class="g">✦</span><span>Gold Coast, Australia</span><span class="g">✦</span><span>© <span id="yr">2026</span></span></div>
+  </div>
+</footer>
+<script src="js/saturday.js" defer></script>
+<script src="js/saturday-free-experience.js" defer></script>
 </body>
 </html>

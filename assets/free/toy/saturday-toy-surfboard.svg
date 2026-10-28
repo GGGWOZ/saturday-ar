@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250"><title>Saturday surfboard</title>
+<defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e9dfc6"/><stop offset=".5" stop-color="#f7f0de"/><stop offset="1" stop-color="#dccfb0"/></linearGradient>
+<linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FE3E0"/><stop offset="1" stop-color="#D4A84B"/></linearGradient>
+<filter id="s" x="-20%" y="-10%" width="140%" height="120%"><feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#000" flood-opacity=".45"/></filter></defs>
+<g filter="url(#s)"><path d="M500 40C640 160 700 420 700 660C700 900 640 1110 500 1210C360 1110 300 900 300 660C300 420 360 160 500 40Z" fill="url(#b)" stroke="#0B1020" stroke-width="6"/></g>
+<path d="M500 52V1198" stroke="#b89a5e" stroke-width="4" opacity=".7"/>
+<path d="M318 470C380 455 620 455 682 470" stroke="url(#r)" stroke-width="14" fill="none" opacity=".9"/>
+<path d="M312 505C380 490 620 490 688 505" stroke="#0B1020" stroke-width="5" fill="none" opacity=".8"/>
+<path d="M470 1150L500 1100L530 1150" fill="#0B1020" opacity=".55"/>
+</svg>

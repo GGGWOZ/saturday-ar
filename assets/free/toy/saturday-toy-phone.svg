@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250"><title>Phone back</title>
+<defs><linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f2a52"/><stop offset="1" stop-color="#0c1124"/></linearGradient>
+<linearGradient id="e" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8FE3E0"/><stop offset=".5" stop-color="#D4A84B"/><stop offset="1" stop-color="#8FE3E0"/></linearGradient>
+<filter id="s"><feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#000" flood-opacity=".5"/></filter></defs>
+<g filter="url(#s)"><rect x="270" y="70" width="460" height="1110" rx="90" fill="url(#p)" stroke="url(#e)" stroke-width="8"/></g>
+<rect x="310" y="120" width="190" height="200" rx="46" fill="#0a0e1d" stroke="#2c3866" stroke-width="4"/>
+<circle cx="365" cy="175" r="34" fill="#05070f" stroke="#3a4880" stroke-width="5"/><circle cx="445" cy="175" r="34" fill="#05070f" stroke="#3a4880" stroke-width="5"/><circle cx="365" cy="262" r="34" fill="#05070f" stroke="#3a4880" stroke-width="5"/><circle cx="445" cy="262" r="12" fill="#F3D58A"/>
+</svg>

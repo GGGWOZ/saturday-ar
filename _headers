@@ -1,8 +1,0 @@
-/*.glb
-  Content-Type: model/gltf-binary
-  Access-Control-Allow-Origin: *
-/*.usdz
-  Content-Type: model/vnd.usdz+zip
-  Access-Control-Allow-Origin: *
-/*.mind
-  Content-Type: application/octet-stream
