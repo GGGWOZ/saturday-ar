@@ -367,3 +367,25 @@ body[data-option="qr"] .code{font-size:clamp(84px,11vw,168px)}
 @media (max-width:420px){.nav .wrap>.btn{padding:9px 13px;font-size:12px}}
 @media (min-width:1100px){.nav .menu-btn{display:none}}
 @media (max-width:1099px){.nav .brand{margin-right:auto}.nav .wrap>nav{flex:0 0 0;width:0}.nav .wrap{gap:12px}}
+/* t92: Shop dropdown in the header nav */
+.nav ul .has-sub{position:relative;display:flex;align-items:center;gap:4px}
+.nav .sub-toggle{display:inline-grid;place-items:center;width:20px;height:20px;padding:0;border:0;border-radius:50%;background:none;color:var(--muted);cursor:pointer}
+.nav .sub-toggle:hover,.nav .has-sub.sub-open .sub-toggle{color:var(--teal)}
+.nav .sub-toggle:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.nav .sub-toggle svg{transition:transform .2s}
+.nav .has-sub.sub-open .sub-toggle svg{transform:rotate(180deg)}
+.nav ul a.cur{color:var(--gold)}
+.nav ul.sub{display:none;position:absolute;top:100%;left:-18px;flex-direction:column;gap:0;min-width:190px;margin:0;padding:14px 0 8px;list-style:none;z-index:60}
+.nav ul.sub::before{content:"";position:absolute;inset:8px 0 0;background:rgba(11,16,32,.97);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.45);z-index:-1}
+.nav ul.sub a{display:block;padding:10px 18px;white-space:nowrap}
+.nav ul.sub a:hover,.nav ul.sub a:focus-visible{color:var(--teal)}
+@media (min-width:1100px){.nav .has-sub:hover>ul.sub,.nav .has-sub:focus-within>ul.sub,.nav .has-sub.sub-open>ul.sub{display:flex}}
+@media (max-width:1099px){
+  .nav .sub-toggle{display:none}
+  .nav.open ul .has-sub{display:block}
+  .nav.open ul.sub{display:flex;position:static;padding:0 0 6px 20px;min-width:0;background:none;border:0;box-shadow:none}
+  .nav.open ul.sub::before{display:none}
+  .nav.open ul.sub li:nth-child(-n+2){display:none}
+  .nav.open ul.sub a{padding:12px 0;font-size:12px;border-bottom:1px solid rgba(244,236,216,.05)}
+}
+@media (min-width:1100px){.nav .has-sub.sub-dismissed>ul.sub{display:none}}

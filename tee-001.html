@@ -30,11 +30,15 @@
     </a>
     <nav aria-label="Main">
       <ul>
-        <li><a href="index.html#shop">Shop</a></li>
-        <li><a href="hats.html">Hats</a></li>
-        <li><a href="stickers.html">Stickers</a></li>
+        <li class="has-sub"><a href="index.html#shop" class="cur" aria-current="true">Shop</a><button class="sub-toggle" type="button" aria-expanded="false" aria-controls="nav-shop-sub"><span class="sr">Show the Shop menu</span><svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="sub" id="nav-shop-sub" aria-label="Shop">
+            <li><a href="index.html#shop">Shop all</a></li>
+            <li><a href="index.html#shop">Tees</a></li>
+            <li><a href="hats.html">Hats</a></li>
+            <li><a href="stickers.html">Stickers</a></li>
+          </ul>
+        </li>
         <li><a href="scan.html">Scan</a></li>
-        <li><a href="lore.html">Lore</a></li>
         <li><a href="index.html#hologram">Hologram</a></li>
         <li><a href="drop-001.html">Drop 001</a></li>
       </ul>

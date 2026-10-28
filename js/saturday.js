@@ -23,6 +23,26 @@
     matchMedia('(min-width:1100px)').addEventListener('change', e => { if (e.matches) set(false); });
   }
 
+  /* Shop dropdown (desktop): opens on hover, keyboard focus or the toggle; aria-expanded mirrors the state */
+  const sub = nav && nav.querySelector('.has-sub');
+  if (sub) {
+    const tg = sub.querySelector('.sub-toggle');
+    let pinned = false, dismissed = false;
+    const sync = () => {
+      const open = !dismissed && (pinned || sub.matches(':hover') || sub.matches(':focus-within'));
+      sub.classList.toggle('sub-open', open); sub.classList.toggle('sub-dismissed', dismissed); tg.setAttribute('aria-expanded', String(open));
+    };
+    tg.addEventListener('click', () => { dismissed = false; pinned = !pinned; sync(); });
+    sub.addEventListener('mouseenter', () => { dismissed = false; sync(); });
+    sub.addEventListener('mouseleave', () => { pinned = false; sync(); });
+    sub.addEventListener('focusin', sync);
+    sub.addEventListener('focusout', () => setTimeout(() => { if (!sub.matches(':focus-within')) { pinned = false; dismissed = false; } sync(); }, 0));
+    sub.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { pinned = false; dismissed = true; e.stopPropagation(); const a = sub.querySelector('a'); if (document.activeElement !== a && sub.contains(document.activeElement)) a.focus(); sync(); }
+      else if (e.key === 'ArrowDown' && e.target === tg) { e.preventDefault(); dismissed = false; pinned = true; sync(); sub.querySelector('.sub a').focus(); }
+    });
+  }
+
   /* star field */
   const c = $('#stars'), ctx = c && c.getContext('2d');
   if (c) {
