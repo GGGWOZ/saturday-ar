@@ -1,0 +1,14 @@
+/* saturday-shirt-mode.css — Saturday AR Experience */
+@font-face{font-family:"Pirata One";src:url(../assets/fonts/saturday-pirata-one.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";src:url(../assets/fonts/saturday-space-grotesk.woff2) format("woff2");font-weight:300 700}
+html,body{margin:0;height:100%;background:#07041a;color:#f6ecd6;font-family:"Space Grotesk",system-ui,sans-serif;overflow:hidden}
+#ar{position:fixed;inset:0}
+#intro{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;
+  background:radial-gradient(80% 50% at 50% 0%,#3b0f5c,transparent 70%),linear-gradient(180deg,#0b0624,#07041a 60%,#04394a)}
+#intro h1{font-family:"Pirata One",serif;font-weight:400;font-size:64px;margin:0;color:#38f4ff;text-shadow:3px 3px 0 #000,0 0 20px rgba(56,244,255,.4)}
+#intro img{width:min(62vw,260px);border:2px solid #000;border-radius:14px;box-shadow:5px 5px 0 #000}
+#intro p{max-width:340px;line-height:1.5;margin:0;color:rgba(246,236,214,.85)}
+button{font:600 16px "Space Grotesk",sans-serif;color:#04131a;border:2px solid #000;border-radius:999px;padding:14px 26px;background:linear-gradient(100deg,#38f4ff,#ff2fbf);box-shadow:4px 4px 0 #000}
+a{color:#ffc54d;font-size:14px}
+#hint{position:fixed;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom));z-index:5;text-align:center;font-size:13px;letter-spacing:.08em;color:#f6ecd6;text-shadow:0 1px 3px #000;display:none}
+#intro .exp{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#ffc54d;margin:-8px 0 0}

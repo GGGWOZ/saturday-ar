@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -16 240 262" role="img" aria-labelledby="t"><title id="t">Saturday alien mark</title>
+<defs>
+<linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D58A"/><stop offset=".45" stop-color="#D4A84B"/><stop offset=".75" stop-color="#8FE3E0"/><stop offset="1" stop-color="#C9FFFB"/></linearGradient>
+<linearGradient id="se" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8FE3E0"/><stop offset="1" stop-color="#E8FBFA"/></linearGradient>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g fill="none" stroke="url(#sg)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+<ellipse cx="100" cy="74" rx="78" ry="13" transform="rotate(-12 100 74)" stroke-width="1.6" stroke-dasharray="120 18" opacity=".7"/>
+<path fill="#0B1020" d="M100 14C138 14 160 44 160 82C160 116 136 144 116 166C110 173 105 177 100 177C95 177 90 173 84 166C64 144 40 116 40 82C40 44 62 14 100 14Z"/>
+<path d="M23.7 90.2A78 13 -12 0 0 176.3 57.8" stroke-width="1.6" stroke-dasharray="120 18" opacity=".7"/>
+<path d="M93 177L91 196M107 177L109 196"/>
+<path d="M91 196C70 199 54 206 46 230M109 196C130 199 146 206 154 230"/>
+</g>
+<g fill="url(#se)" filter="url(#glow)" opacity=".95">
+<path d="M58 98C68 86 88 88 94 110C82 117 64 113 58 98Z"/>
+<path d="M142 98C132 86 112 88 106 110C118 117 136 113 142 98Z"/>
+</g>
+<circle cx="100" cy="6" r="1.6" fill="#F3D58A"/>
+</svg>

@@ -1,0 +1,12 @@
+<!doctype html><title>Saturday AR Experience — MindAR target compiler (tool)</title><html><body><img id="t" src="../target/saturday-alien-tattoo-target-512.jpg">
+<script type="module">
+import { Compiler } from "../vendor/mindar/mindar-image.prod.js";
+const img = document.getElementById("t");
+await img.decode();
+const c = new Compiler();
+window.progress = 0;
+await c.compileImageTargets([img], p => window.progress = p);
+const buf = await c.exportData();
+let s = ""; const u = new Uint8Array(buf); for (let i = 0; i < u.length; i++) s += String.fromCharCode(u[i]);
+window.result = btoa(s);
+</script></body></html>

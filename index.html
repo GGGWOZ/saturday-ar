@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saturday AR Experience — Hologram Drop · View in AR</title>
+<meta name="description" content="Scan. Summon. Saturday. A holographic alien from the Saturday hemp collection, floating in your space — no app needed.">
+<meta name="theme-color" content="#07041a">
+<meta property="og:title" content="Saturday AR Experience — Hologram Drop">
+<meta property="og:description" content="Summon the Saturday alien into your space. No app needed.">
+<meta property="og:image" content="target/saturday-alien-tattoo-target-512.jpg">
+<link rel="icon" type="image/svg+xml" href="assets/saturday-alien-mark.svg">
+<script type="module" src="vendor/model-viewer.min.js"></script>
+<link rel="stylesheet" href="css/saturday-ar-experience.css">
+</head>
+<body>
+<div class="sky"></div><div class="stars"></div>
+<svg class="waves" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 70 Q75 20 150 70 T300 70 T450 70 T600 70 T750 70 T900 70 T1050 70 T1200 70 V120 H0Z" fill="#0b6c7d"/><path d="M0 90 Q75 50 150 90 T300 90 T450 90 T600 90 T750 90 T900 90 T1050 90 T1200 90 V120 H0Z" fill="#04394a"/></svg>
+<main>
+  <header><div class="tag">Gold Coast · Hemp</div><div class="badge">Hologram drop 01</div></header>
+  <h1 class="wordmark">Saturday<span class="sr"> AR Experience</span></h1>
+  <p class="exp">Saturday AR Experience</p>
+  <span class="banner">Where the ocean meets the sky</span>
+
+  <div class="stage">
+    <span class="corner tl">Specimen 0601</span><span class="corner tr">● Live</span>
+    <model-viewer id="mv"
+      src="models/saturday-alien.glb"
+      ios-src="models/saturday-alien.usdz"
+      alt="A holographic Saturday alien head with a gold halo and orbiting neon ring, floating above a hologram projector"
+      ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" ar-placement="floor"
+      camera-controls touch-action="pan-y" auto-rotate auto-rotate-delay="2500" rotation-per-second="18deg"
+      autoplay animation-name="HoloDance"
+      camera-orbit="0deg 78deg 118%" field-of-view="30deg" min-camera-orbit="auto auto 0.8m"
+      shadow-intensity="1.2" shadow-softness="0.8" exposure="1.15" environment-image="neutral" tone-mapping="neutral"
+      interaction-prompt="none">
+      <button slot="ar-button" class="ar-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
+        View in your space
+      </button>
+    </model-viewer>
+  </div>
+
+  <p class="copy">Tap <b>View in your space</b> and point your phone at the floor — the Saturday alien beams in, floats and dances right where you're standing. No app. Just vibes.</p>
+  <div class="row">
+    <a class="btn2 hot" href="saturday-shirt-mode.html">Shirt mode · beta</a>
+    <a class="btn2" id="shop" href="#" rel="noopener">Shop the shirt</a>
+  </div>
+  <p class="note">AR needs a phone — scan the QR code on your Saturday tag with your iPhone or Android camera. You can still spin the alien here.</p>
+  <footer>Saturday · <span>Hemp</span> · Est. Gold Coast</footer>
+</main>
+<script src="js/saturday-ar-experience.js"></script>
+</body>
+</html>
