@@ -1,6 +1,7 @@
 /* Saturday — Scan to Reveal. Tap-to-scan (default) or camera + QR (BarcodeDetector, else vendored jsQR).
-   Reveal: teal ripple, Alley pops out tail-first, spins on his board-tail through sea foam and snow,
-   the gold ring snaps in, two-finger salute, then idle. Tap him for a kickflip. No tracking, no network calls. */
+   Reveal: teal ripple, Alley (the Saturday alien head) rises out of it on a hologram pad, spins through
+   sea foam and snow, the gold ring snaps into orbit with a glint, the eyes catch the light, then idle float
+   with blinks. Tap the head for a trick. No tracking, no network calls. */
 (() => {
   const A = window.SaturdayAlley; if (!A) return;
   const NAME = A.NAME;
@@ -16,12 +17,13 @@
   const wait = ms => new Promise(r => setTimeout(r, ms));
   const say = t => { msg.textContent = t; };
 
-  /* Alley markup (one SVG, both arm poses, CSS switches between them) */
-  wrap.querySelector('.alley-trick').innerHTML = A.svg({ id: 'scan', pose: 'idle', arms: 'both', shadow: false });
+  /* Alley markup: the alien head mark on a hologram pad */
+  wrap.querySelector('.alley-trick').innerHTML = A.svg({ id: 'scan' });
   const svg = wrap.querySelector('svg');
-  const ring = svg.querySelector('.al-ring'), glint = svg.querySelector('.al-glint-star'), board = svg.querySelector('.al-board');
-  const salute = svg.querySelector('[data-arm="salute"]');
+  const rings = [...svg.querySelectorAll('.al-ring,.al-ring-back')], glint = svg.querySelector('.al-glint-star'), board = svg.querySelector('.al-board');
+  const headEl = svg.querySelector('.al-head'), eyeGlints = [...svg.querySelectorAll('.al-glint')];
   const blinks = [...svg.querySelectorAll('.al-blink')];
+  const eyeFlash = () => eyeGlints.forEach((g, i) => g.animate([{ opacity: .9 }, { opacity: 1, transform: 'scale(1.8)' }, { opacity: .9, transform: 'none' }], { duration: 520, delay: i * 40, easing: 'ease-out' }));
 
   /* reduced motion: hold the poster frame */
   const syncVideo = () => { if (reduced()) { bg.pause(); } else { const p = bg.play(); p && p.catch(() => {}); } };
@@ -88,52 +90,45 @@
   let busy = false;
   async function reveal() {
     if (busy) return; busy = true;
-    stage.dataset.state = 'revealing'; stage.dataset.ring = 'off'; stage.dataset.pose = 'idle';
+    stage.dataset.state = 'revealing'; stage.dataset.ring = 'off';
     card.classList.remove('show');
     vib(30);
     const { x, y } = point();
     const pop = wrap.querySelector('.alley-pop'), spin = wrap.querySelector('.alley-spin');
     if (reduced()) {
       pop.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 400, fill: 'both' });
-      stage.dataset.ring = 'on'; stage.dataset.pose = 'salute';
+      stage.dataset.ring = 'on';
       await wait(500);
     } else {
       ripple(x, y, Math.min(W, H) * .42);
       await wait(220);
       pop.animate([
-        { transform: 'translateY(34%) scale(.12) rotate(-180deg)', opacity: 0 },
-        { transform: 'translateY(10%) scale(.5) rotate(-150deg)', opacity: 1, offset: .16 },
-        { transform: 'translateY(-34%) scale(1.04) rotate(12deg)', offset: .5 },
-        { transform: 'translateY(-6%) scale(1) rotate(-3deg)', offset: .78 },
-        { transform: 'translateY(0) scale(1.07,.92) rotate(0deg)', offset: .88 },
-        { transform: 'translateY(0) scale(1) rotate(0deg)', opacity: 1 }
+        { transform: 'translateY(38%) scale(.08)', opacity: 0, filter: 'brightness(3) saturate(0)' },
+        { transform: 'translateY(22%) scale(.4)', opacity: 1, offset: .18 },
+        { transform: 'translateY(-16%) scale(1.06)', filter: 'brightness(1.4) saturate(1)', offset: .55 },
+        { transform: 'translateY(3%) scale(.98,1.02)', offset: .8 },
+        { transform: 'translateY(0) scale(1)', opacity: 1, filter: 'none' }
       ], { duration: 1250, easing: 'cubic-bezier(.25,.8,.3,1)', fill: 'both' });
-      spin.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(360deg)' }], { duration: 760, delay: 380, easing: 'cubic-bezier(.5,0,.3,1)', fill: 'both' });
+      spin.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(720deg)' }], { duration: 1000, delay: 160, easing: 'cubic-bezier(.45,0,.2,1)', fill: 'both' });
       let k = 0; const sprayIv = setInterval(() => { const b = boardPoint(); spray(b.x, b.y, 16); if (++k > 7) clearInterval(sprayIv); }, 95);
       await wait(1180);
       const b = boardPoint(); spray(b.x, b.y + 6, 26, .7); vib(12);
       await wait(120);
       /* ring snaps in with a glint */
       stage.dataset.ring = 'on';
-      ring.animate([{ transform: 'translateY(-46px) scale(1.7)', opacity: 0 }, { transform: 'translateY(4px) scale(.94)', opacity: 1, offset: .7 }, { transform: 'none', opacity: 1 }], { duration: 420, easing: 'cubic-bezier(.3,1.4,.5,1)' });
+      rings.forEach(r => r.animate([{ transform: 'translateY(-60px) scale(1.8)', opacity: 0 }, { transform: 'translateY(4px) scale(.95)', opacity: 1, offset: .7 }, { transform: 'none', opacity: 1 }], { duration: 440, easing: 'cubic-bezier(.3,1.4,.5,1)' }));
       setTimeout(() => glint.animate([{ transform: 'scale(0) rotate(0deg)', opacity: 0 }, { transform: 'scale(2.2) rotate(90deg)', opacity: 1, offset: .4 }, { transform: 'scale(1) rotate(180deg)', opacity: 1 }], { duration: 650, easing: 'ease-out' }), 300);
-      await wait(620);
-      /* two-finger salute */
-      stage.dataset.pose = 'salute';
-      salute.animate([{ transform: 'rotate(64deg)' }, { transform: 'rotate(-6deg)', offset: .7 }, { transform: 'rotate(0deg)' }], { duration: 380, easing: 'cubic-bezier(.3,1.3,.5,1)' });
+      await wait(560);
+      /* the eyes catch the light */
+      eyeFlash();
     }
     stage.dataset.state = 'revealed';
     blinkT = setTimeout(blink, 1600);
     setTimeout(() => { card.classList.add('show'); }, reduced() ? 100 : 700);
-    setTimeout(() => {
-      if (stage.dataset.state !== 'revealed') return;
-      if (!reduced()) salute.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(64deg)' }], { duration: 260, easing: 'ease-in' }).onfinish = () => { stage.dataset.pose = 'idle'; };
-      else stage.dataset.pose = 'idle';
-    }, 1900);
     busy = false;
   }
 
-  /* tap Alley: kickflip */
+  /* tap Alley: a barrel-roll spin, the ring wobbles, the eyes glint */
   let flipping = false;
   wrap.querySelector('.alley-btn').addEventListener('click', () => {
     if (stage.dataset.state !== 'revealed' || flipping) return;
@@ -141,9 +136,11 @@
     const t = wrap.querySelector('.alley-trick');
     if (reduced()) { t.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-6%)' }, { transform: 'translateY(0)' }], { duration: 400 }).onfinish = () => { flipping = false; }; return; }
     const b0 = boardPoint(); spray(b0.x, b0.y, 14, .8);
-    t.animate([{ transform: 'translateY(0) rotate(0)' }, { transform: 'translateY(-38%) rotate(-8deg)', offset: .45 }, { transform: 'translateY(-30%) rotate(6deg)', offset: .6 }, { transform: 'translateY(0) scale(1.05,.93)', offset: .9 }, { transform: 'none' }], { duration: 860, easing: 'cubic-bezier(.3,.7,.3,1)' });
-    board.animate([{ transform: 'translateY(0) scaleY(1) rotate(0)' }, { transform: 'translateY(-22px) scaleY(-1) rotate(-4deg)', offset: .35 }, { transform: 'translateY(-26px) scaleY(1) rotate(4deg)', offset: .62 }, { transform: 'none' }], { duration: 860, easing: 'ease-in-out' })
-      .onfinish = () => { const b = boardPoint(); spray(b.x, b.y, 22, .6); flipping = false; };
+    t.animate([{ transform: 'translateY(0) rotateY(0)' }, { transform: 'translateY(-14%) rotateY(180deg)', offset: .45 }, { transform: 'translateY(-10%) rotateY(320deg)', offset: .7 }, { transform: 'translateY(0) rotateY(360deg) scale(1.03,.97)', offset: .9 }, { transform: 'rotateY(360deg)' }], { duration: 900, easing: 'cubic-bezier(.3,.7,.3,1)' });
+    rings.forEach(r => r.animate([{ transform: 'rotate(0)' }, { transform: 'rotate(-10deg)', offset: .4 }, { transform: 'rotate(6deg)', offset: .75 }, { transform: 'none' }], { duration: 900, easing: 'ease-in-out' }));
+    glint.animate([{ transform: 'scale(1) rotate(0deg)' }, { transform: 'scale(2.4) rotate(90deg)', offset: .5 }, { transform: 'scale(1) rotate(180deg)' }], { duration: 700, delay: 500 });
+    setTimeout(eyeFlash, 640);
+    setTimeout(() => { const b = boardPoint(); spray(b.x, b.y, 22, .6); flipping = false; }, 900);
   });
 
   /* ---------- scan: tap ---------- */
@@ -213,7 +210,7 @@
   /* ---------- card actions ---------- */
   const reset = () => {
     clearTimeout(blinkT); card.classList.remove('show');
-    stage.dataset.state = 'ready'; stage.dataset.ring = 'off'; stage.dataset.pose = 'idle';
+    stage.dataset.state = 'ready'; stage.dataset.ring = 'off';
     wrap.querySelectorAll('.alley-pop,.alley-spin').forEach(el => el.getAnimations().forEach(a => a.cancel()));
     if (bar) bar.getAnimations().forEach(a => a.cancel());
     if (stage.dataset.mode === 'camera' && stream) { say('Point at a code. Any QR works.'); revealTimer = setTimeout(() => { if (stream && stage.dataset.state === 'ready') btnReveal.hidden = false; }, 3500); detect(); }
@@ -232,12 +229,11 @@
       x.drawImage(src, (w - vw * s) / 2, (h - vh * s) / 2, vw * s, vh * s);
       const g = x.createLinearGradient(0, 0, 0, h); g.addColorStop(0, 'rgba(11,16,32,.55)'); g.addColorStop(.25, 'rgba(11,16,32,0)'); g.addColorStop(.72, 'rgba(11,16,32,0)'); g.addColorStop(1, 'rgba(11,16,32,.9)'); x.fillStyle = g; x.fillRect(0, 0, w, h);
       const clone = svg.cloneNode(true); clone.setAttribute('width', 400); clone.setAttribute('height', 480);
-      clone.querySelectorAll('[data-arm="salute"]').forEach(n => n.remove());
       const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(clone)], { type: 'image/svg+xml' }));
       const img = new Image(); await new Promise((r, j) => { img.onload = r; img.onerror = j; img.src = url; });
       x.drawImage(img, w / 2 - 260, h * .43 - 380, 520, 624); URL.revokeObjectURL(url);
       x.textAlign = 'center'; x.fillStyle = '#F3D58A'; x.font = '64px "Pirata One", serif'; x.fillText(`You found ${NAME}`, w / 2, h - 150);
-      x.fillStyle = '#8FE3E0'; x.font = '600 24px "Space Grotesk", sans-serif'; x.fillText('TIDE-GLIDER · SATURDAY ORIGINAL 001', w / 2, h - 100);
+      x.fillStyle = '#8FE3E0'; x.font = '600 24px "Space Grotesk", sans-serif'; x.fillText('THE SATURDAY ALIEN · ORIGINAL 001', w / 2, h - 100);
       x.fillStyle = 'rgba(244,236,216,.7)'; x.font = '500 20px "Space Grotesk", sans-serif'; x.fillText('saturdayforthewin.com/scan', w / 2, h - 60);
       const blob = await new Promise(r => c.toBlob(r, 'image/png'));
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `saturday-${NAME.toLowerCase()}-found.png`; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);

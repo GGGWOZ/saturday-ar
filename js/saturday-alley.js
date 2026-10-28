@@ -1,118 +1,73 @@
-/* Saturday — Alley, the Tide-Glider. Original Saturday creature (Saturday Original 001).
+/* Saturday — Alley, the Saturday alien. The scannable mark: an elongated alien head with glossy
+   gold-rimmed almond eyes, a hologram-teal rim glow and the gold Saturn ring.
    One place for the name: change CREATURE_NAME and every page that uses data-alley-name follows. */
 (() => {
   const CREATURE_NAME = 'Alley';
-  const CREATURE_TITLE = 'Tide-Glider';
+  const CREATURE_TITLE = 'The Saturday Alien';
 
-  /* svg({ id, pose, shadow, cls }) -> markup string
-     pose: 'salute' (default) | 'idle' | 'rad' (arms out, for stunts) */
+  /* svg({ id, cls, shadow, base, holo }) -> markup string. viewBox 0 0 400 480.
+     Groups: .al-ring-back / .al-ring (Saturn ring behind / in front of the head), .al-head,
+     .al-blink (eyes), .al-glint (eye highlights), .al-glint-star, .al-board (hologram pad under the head). */
   function svg(o = {}) {
     const p = (o.id || 'al') + '-';
-    const pose = o.pose || 'salute';
-    const both = o.arms === 'both';
     const u = n => `url(#${p}${n})`;
-    const armR = {
-      salute: `<g class="al-arm-r" data-arm="salute">
-          <path d="M244 268 C284 258 306 222 300 186 C298 174 296 166 292 160" fill="none" stroke="#070b1c" stroke-width="26" stroke-linecap="round"/>
-          <path d="M244 268 C284 258 306 222 300 186 C298 174 296 166 292 160" fill="none" stroke="${u('fur')}" stroke-width="21" stroke-linecap="round"/>
-          <path d="M252 262 C286 252 304 220 300 190" fill="none" stroke="${u('rim')}" stroke-width="3" stroke-linecap="round" opacity=".7"/>
-          <g transform="translate(290 154) rotate(-28)">
-            <ellipse cx="0" cy="0" rx="15.5" ry="13.5" fill="#070b1c"/><rect x="-11.5" y="-32.5" width="13" height="29" rx="6.5" fill="#070b1c"/><rect x="-1.5" y="-34.5" width="13" height="31" rx="6.5" fill="#070b1c"/>
-            <ellipse cx="0" cy="0" rx="13" ry="11" fill="${u('fur')}"/>
-            <rect x="-9" y="-30" width="8" height="24" rx="4" fill="${u('fur')}"/>
-            <rect x="1" y="-32" width="8" height="26" rx="4" fill="${u('fur')}"/>
-            <rect x="-8" y="-29" width="2.4" height="18" rx="1.2" fill="#8FE3E0" opacity=".35"/>
-          </g>
-        </g>`,
-      idle: `<g class="al-arm-r" data-arm="idle">
-          <path d="M244 268 C262 292 268 318 258 340" fill="none" stroke="${u('fur')}" stroke-width="21" stroke-linecap="round"/>
-          <ellipse cx="256" cy="344" rx="12" ry="10" fill="${u('fur')}"/>
-        </g>`,
-      rad: `<g class="al-arm-r" data-arm="rad">
-          <path d="M244 268 C270 262 296 246 318 222" fill="none" stroke="${u('fur')}" stroke-width="21" stroke-linecap="round"/>
-          <ellipse cx="322" cy="216" rx="12" ry="11" fill="${u('fur')}"/>
-          <rect x="318" y="190" width="8" height="22" rx="4" fill="${u('fur')}" transform="rotate(20 322 214)"/>
-          <rect x="328" y="192" width="8" height="22" rx="4" fill="${u('fur')}" transform="rotate(34 332 214)"/>
-        </g>`
-    };
-    const armRPose = both ? '' : armR[pose];
-    const armL = pose === 'rad'
-      ? `<path d="M156 268 C132 262 106 248 84 228" fill="none" stroke="${u('fur')}" stroke-width="21" stroke-linecap="round"/><ellipse cx="80" cy="224" rx="12" ry="11" fill="${u('fur')}"/>`
-      : `<path d="M156 268 C138 292 130 318 142 342" fill="none" stroke="${u('fur')}" stroke-width="21" stroke-linecap="round"/><ellipse cx="146" cy="346" rx="12" ry="10" fill="${u('fur')}"/>`;
-    return `<svg class="${o.cls || 'alley'}" viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${CREATURE_NAME}, the ${CREATURE_TITLE}">
+    const HEAD = 'M200 50C288 50 342 110 342 196C342 266 300 320 254 368C236 390 218 406 200 406C182 406 164 390 146 368C100 320 58 266 58 196C58 110 112 50 200 50Z';
+    const EYE = 'M-62 0C-42 -38 34 -40 62 0C38 36 -40 38 -62 0Z';
+    const EYE_IN = 'M-53 0C-36 -31 28 -33 53 0C31 30 -34 31 -53 0Z';
+    const eye = (x, y, r, flip) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(1.1)"><g class="al-blink">
+        <path d="${EYE}" fill="#05070f"/>
+        <path d="${EYE}" fill="none" stroke="${u('gold')}" stroke-width="7"/>
+        <path d="${EYE_IN}" fill="${u('eye')}"/>
+        <path d="M-50 -6C-34 -26 10 -30 36 -18" fill="none" stroke="#8FE3E0" stroke-width="2" opacity=".55" stroke-linecap="round"/>
+        <ellipse class="al-glint" cx="${flip ? 18 : -18}" cy="-12" rx="17" ry="7" fill="#fff" opacity=".92" transform="rotate(${flip ? 14 : -14})"/>
+        <circle class="al-glint" cx="${flip ? -26 : 26}" cy="10" r="4.2" fill="#C9FFFB" opacity=".9"/>
+      </g></g>`;
+    const ring = (front) => `<g transform="rotate(-12 200 122)">
+        ${front ? `<g clip-path="url(#${p}front)">` : `<g clip-path="url(#${p}back)">`}
+          <ellipse cx="200" cy="126" rx="182" ry="34" fill="none" stroke="#05070f" stroke-width="15"/>
+          <ellipse cx="200" cy="122" rx="182" ry="34" fill="none" stroke="${u('gold')}" stroke-width="10"/>
+          <ellipse cx="200" cy="122" rx="182" ry="34" fill="none" stroke="#FFF6D6" stroke-width="2" stroke-dasharray="70 400" stroke-dashoffset="${front ? -40 : -300}" opacity=".95"/>
+          <ellipse cx="200" cy="122" rx="166" ry="27" fill="none" stroke="#8FE3E0" stroke-width="1.6" opacity=".55"/>
+        </g></g>`;
+    return `<svg class="${o.cls || 'alley'}" viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${CREATURE_NAME}, ${CREATURE_TITLE.replace(/^The /, "the ")}">
   <defs>
-    <radialGradient id="${p}fur" cx=".36" cy=".26" r=".85"><stop offset="0" stop-color="#3550a3"/><stop offset=".35" stop-color="#1c2b66"/><stop offset=".75" stop-color="#121c45"/><stop offset="1" stop-color="#0a1130"/></radialGradient>
-    <linearGradient id="${p}rim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8FE3E0" stop-opacity="0"/><stop offset="1" stop-color="#8FE3E0"/></linearGradient>
-    <linearGradient id="${p}belly" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8FBFA"/><stop offset=".5" stop-color="#b7efec"/><stop offset="1" stop-color="#7fd6d3"/></linearGradient>
+    <radialGradient id="${p}skin" cx=".38" cy=".24" r=".9"><stop offset="0" stop-color="#3a5aa8"/><stop offset=".3" stop-color="#1d2d68"/><stop offset=".7" stop-color="#111a42"/><stop offset="1" stop-color="#090f2a"/></radialGradient>
+    <linearGradient id="${p}chrome" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".22" stop-color="#C9FFFB" stop-opacity=".18"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="${p}rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D58A"/><stop offset=".45" stop-color="#D4A84B"/><stop offset=".75" stop-color="#8FE3E0"/><stop offset="1" stop-color="#C9FFFB"/></linearGradient>
     <linearGradient id="${p}gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF0BF"/><stop offset=".3" stop-color="#F3D58A"/><stop offset=".65" stop-color="#D4A84B"/><stop offset="1" stop-color="#9a6a17"/></linearGradient>
-    <radialGradient id="${p}eye" cx=".45" cy=".35" r=".75"><stop offset="0" stop-color="#26305a"/><stop offset=".45" stop-color="#070a16"/><stop offset="1" stop-color="#000"/></radialGradient>
-    <radialGradient id="${p}tip" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#C9FFFB"/><stop offset=".7" stop-color="#8FE3E0"/><stop offset="1" stop-color="#8FE3E0" stop-opacity="0"/></radialGradient>
-    <linearGradient id="${p}board" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f6f1e4"/><stop offset=".44" stop-color="#e3f6f4"/><stop offset=".5" stop-color="#8FE3E0"/><stop offset=".56" stop-color="#1c2b66"/><stop offset="1" stop-color="#0d1536"/></linearGradient>
-    <linearGradient id="${p}boardSheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
-    <radialGradient id="${p}muzzle" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#4a64b5"/><stop offset="1" stop-color="#22336f"/></radialGradient>
-    <radialGradient id="${p}shadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
-    <filter id="${p}glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    <clipPath id="${p}almond"><path d="M-35 0 C-20 -24 20 -24 35 0 C20 22 -20 22 -35 0 Z"/></clipPath>
-    <filter id="${p}soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.2"/></filter>
+    <radialGradient id="${p}eye" cx=".38" cy=".3" r=".85"><stop offset="0" stop-color="#2b3766"/><stop offset=".35" stop-color="#0b0f22"/><stop offset="1" stop-color="#000"/></radialGradient>
+    <radialGradient id="${p}pad" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E8FBFA" stop-opacity=".95"/><stop offset=".35" stop-color="#8FE3E0" stop-opacity=".7"/><stop offset="1" stop-color="#8FE3E0" stop-opacity="0"/></radialGradient>
+    <linearGradient id="${p}beam" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#8FE3E0" stop-opacity=".45"/><stop offset="1" stop-color="#8FE3E0" stop-opacity="0"/></linearGradient>
+    <filter id="${p}glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+    <clipPath id="${p}headclip"><path d="${HEAD}"/></clipPath>
+    <clipPath id="${p}back" clipPathUnits="userSpaceOnUse"><rect x="-100" y="-200" width="600" height="322"/></clipPath>
+    <clipPath id="${p}front" clipPathUnits="userSpaceOnUse"><rect x="-100" y="122" width="600" height="300"/></clipPath>
   </defs>
-  ${o.shadow === false ? '' : `<ellipse class="al-shadow" cx="200" cy="452" rx="150" ry="14" fill="${u('shadow')}"/>`}
   <g class="al-all">
-  <g class="al-board">
-    <path d="M26 412 C58 392 112 390 152 390 L322 390 C352 390 370 401 370 415 C370 430 352 440 322 440 L152 440 C104 440 58 432 26 412 Z" fill="${u('board')}" stroke="#0B1020" stroke-width="3"/>
-    <path d="M26 412 C58 392 112 390 152 390 L322 390 C352 390 370 401 370 415 C370 430 352 440 322 440 L152 440 C104 440 58 432 26 412 Z" fill="${u('boardSheen')}"/>
-    <path d="M40 412 C80 413 140 414 196 415" fill="none" stroke="#D4A84B" stroke-width="2" opacity=".85"/>
-    <path d="M226 399 L352 402 M226 432 L350 428" stroke="${u('gold')}" stroke-width="2.4" stroke-linecap="round"/>
-    <path d="M252 410 h78" stroke="#8FE3E0" stroke-width="4" stroke-linecap="round" opacity=".8"/>
-  </g>
-  <path class="al-tailroot" d="M232 362 C262 372 282 386 300 394 L262 396 C246 388 236 380 226 372 Z" fill="${u('fur')}"/>
-  <g class="al-feet"><ellipse cx="176" cy="394" rx="20" ry="9" fill="#0d1536"/><ellipse cx="224" cy="394" rx="20" ry="9" fill="#0d1536"/><ellipse cx="172" cy="391" rx="9" ry="3" fill="#3550a3" opacity=".6"/><ellipse cx="220" cy="391" rx="9" ry="3" fill="#3550a3" opacity=".6"/></g>
-  <g class="al-body">
-    <g class="al-arm-l">${armL}</g>
-    <path d="M160 236 C138 272 134 332 148 370 C160 400 240 400 252 370 C266 332 262 272 240 236 Z" fill="${u('fur')}"/>
-    <path d="M246 252 C262 290 264 336 250 370" fill="none" stroke="${u('rim')}" stroke-width="3" stroke-linecap="round" opacity=".7"/>
-    <path d="M178 262 C164 296 164 344 174 372 C186 392 214 392 226 372 C236 344 236 296 222 262 C210 252 190 252 178 262 Z" fill="${u('belly')}"/>
-    <path d="M186 286 q14 6 28 0 M184 312 q16 7 32 0 M186 338 q14 6 28 0" fill="none" stroke="#5fbdb9" stroke-width="1.6" stroke-linecap="round" opacity=".45"/>
-    <path d="M182 270 C176 296 176 330 182 350" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".55"/>
-    ${both ? armR.idle : (pose === 'salute' ? '' : armRPose)}
-  </g>
+  ${o.base === false ? '' : `<g class="al-board">
+    <path d="M150 452 L250 452 L232 360 L168 360 Z" fill="${u('beam')}" opacity=".7"/>
+    <ellipse cx="200" cy="452" rx="92" ry="16" fill="${u('pad')}"/>
+    <ellipse cx="200" cy="452" rx="70" ry="10" fill="none" stroke="#C9FFFB" stroke-width="2" opacity=".8"/>
+  </g>`}
+  <g class="al-ring-back">${ring(false)}</g>
   <g class="al-head">
-    <g class="al-ant al-ant-l"><path d="M180 104 C172 88 162 78 152 70" fill="none" stroke="${u('fur')}" stroke-width="6" stroke-linecap="round"/><circle class="al-tip" cx="150" cy="67" r="13" fill="${u('tip')}" filter="url(#${p}glow)"/><circle cx="150" cy="67" r="5.5" fill="#E8FBFA"/></g>
-    <g class="al-ant al-ant-r"><path d="M220 104 C228 88 238 78 248 70" fill="none" stroke="${u('fur')}" stroke-width="6" stroke-linecap="round"/><circle class="al-tip" cx="250" cy="67" r="13" fill="${u('tip')}" filter="url(#${p}glow)"/><circle cx="250" cy="67" r="5.5" fill="#E8FBFA"/></g>
-    <circle cx="124" cy="124" r="17" fill="${u('fur')}"/><circle cx="124" cy="126" r="8" fill="#8FE3E0" opacity=".55"/>
-    <circle cx="276" cy="124" r="17" fill="${u('fur')}"/><circle cx="276" cy="126" r="8" fill="#8FE3E0" opacity=".55"/>
-    <path d="M200 92 C260 92 294 128 294 172 C294 216 258 248 200 252 C142 248 106 216 106 172 C106 128 140 92 200 92 Z" fill="${u('fur')}"/>
-    <path d="M150 110 C170 98 196 96 214 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".22" filter="url(#${p}soft)"/>
-    <path d="M286 150 C294 182 284 218 250 240" fill="none" stroke="${u('rim')}" stroke-width="3" stroke-linecap="round" opacity=".7"/>
-    <ellipse cx="200" cy="214" rx="38" ry="25" fill="${u('muzzle')}"/>
-    <g class="al-eyes">
-      <g transform="translate(158 166) rotate(24) scale(1.14)"><g class="al-blink">
-        <path d="M-38 0 C-22 -27 22 -27 38 0 C22 25 -22 25 -38 0 Z" fill="${u('gold')}"/>
-        <path class="al-eye" d="M-33 0 C-19 -22 19 -22 33 0 C19 20 -19 20 -33 0 Z" fill="${u('eye')}"/>
-        <ellipse class="al-glint" cx="-8" cy="-9" rx="8" ry="4.5" fill="#fff" opacity=".9" transform="rotate(-24)"/>
-        <circle class="al-glint" cx="12" cy="6" r="2.6" fill="#8FE3E0" opacity=".85"/>
-        <g clip-path="url(#${p}almond)"><g transform="rotate(-30)"><path class="al-lid" d="M-50 -9 C-20 -14 20 -12 50 -6 L50 -50 L-50 -50 Z" fill="#16224f"/><path d="M-50 -9 C-20 -14 20 -12 50 -6" fill="none" stroke="${u('gold')}" stroke-width="2.4"/></g></g>
-      </g></g>
-      <g transform="translate(242 166) rotate(-24) scale(1.14)"><g class="al-blink">
-        <path d="M-38 0 C-22 -27 22 -27 38 0 C22 25 -22 25 -38 0 Z" fill="${u('gold')}"/>
-        <path class="al-eye" d="M-33 0 C-19 -22 19 -22 33 0 C19 20 -19 20 -33 0 Z" fill="${u('eye')}"/>
-        <ellipse class="al-glint" cx="-10" cy="-8" rx="8" ry="4.5" fill="#fff" opacity=".9" transform="rotate(24)"/>
-        <circle class="al-glint" cx="10" cy="7" r="2.6" fill="#8FE3E0" opacity=".85"/>
-        <g clip-path="url(#${p}almond)"><g transform="rotate(30)"><path class="al-lid" d="M-50 -4 C-20 -10 20 -12 50 -9 L50 -50 L-50 -50 Z" fill="#16224f"/><path d="M-50 -4 C-20 -10 20 -12 50 -9" fill="none" stroke="${u('gold')}" stroke-width="2.4"/></g></g>
-      </g></g>
+    <path d="${HEAD}" fill="#8FE3E0" opacity=".5" filter="url(#${p}glow)"/>
+    <path d="${HEAD}" fill="${u('skin')}" stroke="#05070f" stroke-width="12" stroke-linejoin="round"/>
+    <g clip-path="url(#${p}headclip)">
+      <path d="${HEAD}" fill="${u('chrome')}"/>
+      <path d="M118 118C146 82 196 70 236 76" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".28"/>
+      <path d="M332 190C330 262 290 318 238 372" fill="none" stroke="#8FE3E0" stroke-width="7" stroke-linecap="round" opacity=".5"/>
+      <g fill="none" stroke="#8FE3E0" stroke-width="1.6" opacity=".35" stroke-linecap="round">
+        
+        <path d="M200 178V196"/><circle cx="200" cy="174" r="3"/>
+      </g>
     </g>
-    <path d="M191 203 C195 199 205 199 209 203 C207 209 203 212 200 212 C197 212 193 209 191 203 Z" fill="#070b1c"/>
-    <ellipse cx="197" cy="204" rx="3" ry="1.4" fill="#fff" opacity=".5"/>
-    <path class="al-smirk" d="M184 224 C192 230 204 230 218 220" fill="none" stroke="#070b1c" stroke-width="3.2" stroke-linecap="round"/>
-    <path d="M216 221 l5 -3" stroke="#070b1c" stroke-width="2.6" stroke-linecap="round"/>
-    <g stroke="#8FE3E0" stroke-width="1.4" stroke-linecap="round" opacity=".45"><path d="M168 212 L136 206 M168 220 L134 222 M232 212 L264 206 M232 220 L266 222"/></g>
-    <g fill="#8FE3E0" opacity=".5"><circle cx="178" cy="210" r="1.6"/><circle cx="182" cy="218" r="1.6"/><circle cx="222" cy="210" r="1.6"/><circle cx="218" cy="218" r="1.6"/></g>
+    <path d="${HEAD}" fill="none" stroke="${u('rim')}" stroke-width="3.2" stroke-linejoin="round" transform="translate(200 227) scale(.955) translate(-200 -227)" opacity=".9"/>
+    <g class="al-eyes">${eye(134, 250, 31, false)}${eye(266, 250, -31, true)}</g>
+    <g fill="#05070f"><path d="M191 318q3 -5 5 0z"/><path d="M204 318q2 -5 5 0z"/></g>
   </g>
-  ${both ? armR.salute : (pose === 'salute' ? armRPose : '')}
-  <g class="al-ring">
-    <ellipse cx="200" cy="26" rx="72" ry="13" fill="none" stroke="#0B1020" stroke-width="7" opacity=".35" transform="rotate(-7 200 26)"/>
-    <ellipse cx="200" cy="24" rx="72" ry="13" fill="none" stroke="${u('gold')}" stroke-width="5" transform="rotate(-7 200 24)"/>
-    <ellipse cx="200" cy="24" rx="72" ry="13" fill="none" stroke="#FFF6D6" stroke-width="1.2" stroke-dasharray="40 200" opacity=".9" transform="rotate(-7 200 24)"/>
-    <g class="al-glint-star" transform="translate(262 15)"><path d="M0 -12 L2.2 -2.2 L12 0 L2.2 2.2 L0 12 L-2.2 2.2 L-12 0 L-2.2 -2.2 Z" fill="#FFF6D6"/></g>
+  <g class="al-ring">${ring(true)}
+    <g class="al-glint-star" transform="translate(354 132)"><path d="M0 -16 L3 -3 L16 0 L3 3 L0 16 L-3 3 L-16 0 L-3 -3 Z" fill="#FFF6D6"/></g>
   </g>
   </g>
 </svg>`;
