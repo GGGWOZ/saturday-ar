@@ -112,3 +112,5 @@
 .drop001-teaser .lede{margin-bottom:0}
 .drop001-teaser .cta-row{margin-top:26px}
 .drop001-teaser .fine{margin-top:18px}
+/* t90: Flash Tee removed, homepage shop grid = 3 tees + 2 wide cards (6-col track, no gaps) */
+@media (min-width:620px){.shop-grid.four.t3{grid-template-columns:repeat(6,1fr)}.shop-grid.four.t3 .pcard{grid-column:span 2}.shop-grid.four.t3 .pcard.wide{grid-column:span 3}}
