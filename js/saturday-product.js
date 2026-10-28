@@ -1,8 +1,8 @@
-/* 008 option switcher: "008 Full Print" / "008 QR". Deep links: #qr, #full (and #qr-art, #art). */
+/* 001 option switcher: "001 Full Print" / "001 QR". Deep links: #qr, #full (and #qr-art, #art). */
 (() => {
   const btns = [...document.querySelectorAll('.opt[data-pick]')];
   if (!btns.length) return;
-  const TITLES = { full: '008 — Hemp Camp Collar Shirt · Saturday', qr: '008 QR — Hemp Camp Collar Shirt · Saturday' };
+  const TITLES = { full: '001 — Hemp Camp Collar Shirt · Saturday', qr: '001 QR — Hemp Camp Collar Shirt · Saturday' };
   const pickFromHash = () => (/^#qr/.test(location.hash) ? 'qr' : 'full');
   const show = (opt, push) => {
     document.querySelectorAll('[data-opt]').forEach(el => { el.hidden = el.dataset.opt !== opt; });

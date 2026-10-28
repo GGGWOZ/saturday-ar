@@ -237,14 +237,14 @@ footer nav a:hover{color:var(--teal)}
   .hero-glow{display:none}
 }
 
-/* ---------- additions: 008, AR/QR, Drop 008 ---------- */
+/* ---------- additions: 001, AR/QR, Drop 001 ---------- */
 a.card,a.frame{display:block;text-decoration:none;color:inherit}
 .card .lbl{color:var(--cream)}
 .page-top{padding-top:clamp(110px,12vw,150px)}
 .crumbs{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(244,236,216,.55);margin-bottom:22px}
 .crumbs a{text-decoration:none;color:var(--gold)}
 
-/* 008 product */
+/* 001 product */
 .product .grid{display:grid;gap:clamp(30px,5vw,70px);align-items:start}
 @media (min-width:960px){.product .grid{grid-template-columns:1.05fr .95fr}}
 .gallery{display:grid;gap:16px;grid-template-columns:1fr 1fr}
@@ -279,7 +279,7 @@ a.card,a.frame{display:block;text-decoration:none;color:inherit}
 .steps li:before{content:counter(s,decimal-leading-zero);font-family:var(--flash);color:var(--ink);background:var(--gold);border:2px solid #000;border-radius:50%;width:40px;height:40px;display:grid;place-items:center;font-size:13px;box-shadow:2px 2px 0 #000}
 .steps b{color:var(--teal)}
 
-/* Drop 008 teaser + page */
+/* Drop 001 teaser + page */
 .free-teaser .box{display:grid;gap:30px;align-items:center;border-radius:28px;padding:clamp(26px,5vw,60px);border:1.5px dashed rgba(212,168,75,.6);background:linear-gradient(160deg,rgba(18,26,56,.9),rgba(15,58,68,.55))}
 @media (min-width:900px){.free-teaser .box{grid-template-columns:1fr 1fr}}
 .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -334,7 +334,7 @@ a.card,a.frame{display:block;text-decoration:none;color:inherit}
 .hint{font-size:12px;color:rgba(244,236,216,.5);margin-top:8px}
 .ph{color:var(--gold)}
 .bundle{min-width:0}.bundle ul li span:first-child{overflow-wrap:anywhere;min-width:0}.bundles{grid-template-columns:minmax(0,1fr)}@media (min-width:900px){.bundles{grid-template-columns:1.2fr 1fr 1fr}}
-/* 008 option switcher */
+/* 001 option switcher */
 .opt-switch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 22px;padding:6px;border-radius:20px;border:1px solid var(--line);background:rgba(11,16,32,.6)}
 .opt{display:flex;align-items:center;gap:12px;text-align:left;cursor:pointer;padding:10px 12px;border-radius:14px;border:1.5px solid transparent;background:transparent;color:var(--cream);font:inherit;transition:background .2s,border-color .2s}
 .opt img{width:40px;height:auto;border-radius:6px;border:1px solid #000;flex:none}
@@ -348,3 +348,22 @@ a.card,a.frame{display:block;text-decoration:none;color:inherit}
 .code{white-space:nowrap}
 body[data-option="qr"] .code{font-size:clamp(84px,11vw,168px)}
 
+/* waitlist: honeypot + sending state */
+.form .hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form button[disabled]{opacity:.7;cursor:progress}
+.msg.ok{color:var(--teal)}
+/* nav: room for 7 links at 1100-1280, and a mobile menu below 1100px */
+@media (min-width:1100px) and (max-width:1279px){.nav ul{gap:20px}.nav ul a{letter-spacing:.18em}}
+.nav .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;margin-left:-6px;order:5;border-radius:999px;border:1.5px solid rgba(212,168,75,.55);background:rgba(11,16,32,.55);color:var(--gold);cursor:pointer;flex:none}
+.nav .menu-btn:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.nav .menu-btn path{transition:transform .25s,opacity .2s;transform-origin:12px 12px}
+.nav.open .menu-btn .l1{transform:translateY(5px) rotate(45deg)}.nav.open .menu-btn .l2{opacity:0}.nav.open .menu-btn .l3{transform:translateY(-5px) rotate(-45deg)}
+@media (max-width:1099px){
+  .nav.open{background:rgba(11,16,32,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+  .nav.open ul{display:flex;flex-direction:column;gap:0;position:absolute;top:68px;left:0;right:0;padding:8px clamp(20px,5vw,40px) 22px;background:rgba(11,16,32,.97);border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.45)}
+  .nav.open ul a{display:block;padding:15px 0;font-size:13px;border-bottom:1px solid rgba(244,236,216,.07)}
+  .nav .wrap{position:relative}
+}
+@media (max-width:420px){.nav .wrap>.btn{padding:9px 13px;font-size:12px}}
+@media (min-width:1100px){.nav .menu-btn{display:none}}
+@media (max-width:1099px){.nav .brand{margin-right:auto}.nav .wrap>nav{flex:0 0 0;width:0}.nav .wrap{gap:12px}}

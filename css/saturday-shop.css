@@ -1,4 +1,4 @@
-/* Saturday shop: tees, hoodies, stickers, lore. Pairs with saturday.css. */
+/* Saturday shop: tees, hats, stickers, lore. Pairs with saturday.css. */
 .shop-grid{display:grid;gap:clamp(16px,2vw,26px);grid-template-columns:1fr}
 @media (min-width:620px){.shop-grid{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1000px){.shop-grid{grid-template-columns:repeat(3,1fr)}}
@@ -92,14 +92,23 @@
 .rules{list-style:none;display:grid;gap:10px;margin-top:20px}
 .rules li{display:flex;gap:12px;color:var(--cream)}
 .rules li:before{content:"✦";color:var(--gold)}
-.drop008-teaser .box{display:grid;gap:clamp(24px,4vw,56px);align-items:center;border-radius:28px;border:2px solid #000;box-shadow:0 0 0 1px rgba(212,168,75,.45),10px 10px 0 #000;padding:clamp(26px,5vw,60px);background:radial-gradient(80% 90% at 85% 10%,rgba(143,227,224,.14),transparent 60%),linear-gradient(160deg,#121a38,#0B1020)}
-@media (min-width:900px){.drop008-teaser .box{grid-template-columns:1.1fr .9fr}}
-.drop008-teaser .cta-row{justify-content:flex-start}
-.drop008-teaser .pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.drop008-teaser .pics img{border-radius:14px;border:2px solid #000;box-shadow:4px 4px 0 #000;aspect-ratio:3/4;object-fit:cover;width:100%}
+.drop001-teaser .box{display:grid;gap:clamp(24px,4vw,56px);align-items:center;border-radius:28px;border:2px solid #000;box-shadow:0 0 0 1px rgba(212,168,75,.45),10px 10px 0 #000;padding:clamp(26px,5vw,60px);background:radial-gradient(80% 90% at 85% 10%,rgba(143,227,224,.14),transparent 60%),linear-gradient(160deg,#121a38,#0B1020)}
+@media (min-width:900px){.drop001-teaser .box{grid-template-columns:1.1fr .9fr}}
+.drop001-teaser .cta-row{justify-content:flex-start}
+.drop001-teaser .pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.drop001-teaser .pics img{border-radius:14px;border:2px solid #000;box-shadow:4px 4px 0 #000;aspect-ratio:3/4;object-fit:cover;width:100%}
 @media (prefers-reduced-motion:reduce){.holo-stk:after{animation:none!important}.pcard,.pcard .im img,.die img{transition:none}}
 /* 2026-10-28: four-up shop on wide screens, scannable sticker note */
 @media (min-width:1200px){.shop-grid.four{grid-template-columns:repeat(4,1fr)}}
 .scannable{margin:0 0 22px;padding:14px 18px;border:1px solid rgba(143,227,224,.35);border-radius:14px;background:rgba(143,227,224,.06);color:var(--muted);font-size:15px;line-height:1.5}
 .scannable b{display:block;color:var(--teal-hi,#C9FFFB);font-weight:600;margin-bottom:4px}
 .mark-alley{filter:drop-shadow(0 0 30px rgba(143,227,224,.45))}
+/* homepage shop: 4 tees + two wide feature cards, no gaps at any width */
+@media (min-width:620px){.shop-grid.four .pcard.wide{grid-column:span 2}.shop-grid.four .pcard.wide .im{aspect-ratio:16/9}}
+@media (min-width:1000px) and (max-width:1199px){.shop-grid.four{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1200px){.shop-grid.four .pcard.wide .im{aspect-ratio:3/2}}
+@media (max-width:619px){.shop-grid.four .pcard.wide .im{aspect-ratio:4/3}}
+/* Drop 001 panel: breathing room between the copy and the buttons */
+.drop001-teaser .lede{margin-bottom:0}
+.drop001-teaser .cta-row{margin-top:26px}
+.drop001-teaser .fine{margin-top:18px}

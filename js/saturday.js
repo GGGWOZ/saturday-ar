@@ -8,6 +8,21 @@
   const onScroll = () => nav && nav.classList.toggle('solid', scrollY > 40);
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
+  /* mobile menu: the main nav folds into a toggle under 1100px */
+  const navList = nav && nav.querySelector('nav[aria-label="Main"]');
+  if (navList) {
+    const ul = navList.querySelector('ul'); ul.id = ul.id || 'nav-links';
+    const mb = document.createElement('button');
+    mb.type = 'button'; mb.className = 'menu-btn'; mb.setAttribute('aria-controls', ul.id); mb.setAttribute('aria-expanded', 'false');
+    mb.innerHTML = '<span class="sr">Menu</span><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg>';
+    navList.after(mb);
+    const set = open => { nav.classList.toggle('open', open); mb.setAttribute('aria-expanded', String(open)); };
+    mb.addEventListener('click', () => set(!nav.classList.contains('open')));
+    ul.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+    addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { set(false); mb.focus(); } });
+    matchMedia('(min-width:1100px)').addEventListener('change', e => { if (e.matches) set(false); });
+  }
+
   /* star field */
   const c = $('#stars'), ctx = c && c.getContext('2d');
   if (c) {
@@ -80,23 +95,54 @@
   if (reduce) mv.removeAttribute('auto-rotate');
   }
 
-  /* waitlist (front-end only: nothing is sent) */
+  /* waitlist: the address is sealed in the browser (RSA-OAEP + AES-GCM) with Saturday's public key, then
+     posted to a keyless ntfy.sh relay topic. An hourly job in a private GitHub repo decrypts new sign-ups and
+     saves them to subscribers.csv. Only the private key (a GitHub Actions secret) can read an address. */
   const f = $('#wl'), input = $('#email'), msg = $('#wl-msg'), box = $('#list');
-  const KEY = 'saturday-waitlist-preview';
-  if (f) {
-  if (localStorage.getItem(KEY)) box.classList.add('ok');
-  f.addEventListener('submit', e => {
-    e.preventDefault();
-    const val = input.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) {
-      input.setAttribute('aria-invalid', 'true'); msg.className = 'msg err';
-      msg.textContent = "That doesn't look like an email address from this planet. Try again?";
-      input.focus(); return;
-    }
-    input.removeAttribute('aria-invalid'); msg.textContent = ''; msg.className = 'msg';
-    try { localStorage.setItem(KEY, '1'); } catch (_) {}
-    box.classList.add('ok');
-  });
+  const LIST = { relay: 'https://ntfy.sh/saturday-list-5ea91aee5481c389ed0e111d', key: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqXRBk7rSuOmNomhrmLXa35X2InwvRlOUHu12DjvcGCuV367ZBgEKc7ufGZerhLZ/ijtFMSoxuM2nD8tVffVsb8VUKNoHa4MYMj2lGyC8rJrqLMPvyz9iCPpikDaLKSmIVFIo0n1EzC9j6gPvUuafvtHR2/vrwro8iDRVB2WK30GodLqi4pe0AnZBFYmmOv6tPxxJ7R0dmasUfy8WEdFW0syEOyVowmwqi2tJOD4PAA4WPrglanXtUbH1rCeRrEKh1M/rAaffhKH+RkIFWZkSXgDwPNoVhWXXBOwSdQ5X8xuszYwXm+BpL/sC8svhSE7BgFxUsxM8SVqs50y8dwiVyQIDAQAB' };
+  const OK_KEY = 'saturday-list-joined';
+  if (f && input && box) {
+    const btn = f.querySelector('button[type="submit"]'), label = btn ? btn.textContent : '';
+    const hp = f.querySelector('input[name="website"]');
+    const say = (t, err) => { msg.className = 'msg' + (err ? ' err' : ' ok'); msg.textContent = t; };
+    const b64 = buf => { let s = ''; new Uint8Array(buf).forEach(c => { s += String.fromCharCode(c); }); return btoa(s); };
+    const seal = async data => {
+      const sub = crypto.subtle;
+      const pub = await sub.importKey('spki', Uint8Array.from(atob(LIST.key), c => c.charCodeAt(0)), { name: 'RSA-OAEP', hash: 'SHA-256' }, false, ['encrypt']);
+      const k = await sub.generateKey({ name: 'AES-GCM', length: 256 }, true, ['encrypt']);
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const ct = await sub.encrypt({ name: 'AES-GCM', iv }, k, new TextEncoder().encode(JSON.stringify(data)));
+      const wk = await sub.encrypt({ name: 'RSA-OAEP' }, pub, await sub.exportKey('raw', k));
+      return btoa(JSON.stringify({ v: 1, k: b64(wk), iv: b64(iv), ct: b64(ct) }));
+    };
+    const done = () => { box.classList.add('ok'); try { localStorage.setItem(OK_KEY, '1'); } catch (_) {} };
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const val = input.value.trim();
+      if (!/^[^\s@,"]+@[^\s@,"]+\.[^\s@,"]{2,}$/.test(val) || val.length > 254) {
+        input.setAttribute('aria-invalid', 'true');
+        say("That doesn't look like an email address from this planet. Try again?", true);
+        input.focus(); return;
+      }
+      input.removeAttribute('aria-invalid');
+      if (hp && hp.value) { done(); return; }            // bots fill the hidden field; humans never see it
+      if (!(window.crypto && crypto.subtle && window.fetch)) { say("This browser can't send the signal securely. Try an up-to-date browser?", true); return; }
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      f.setAttribute('aria-busy', 'true'); say('Sending your signal…');
+      const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 15000);
+      try {
+        const body = await seal({ email: val, src: location.pathname, ts: Date.now() });
+        const r = await fetch(LIST.relay, { method: 'POST', body, signal: ctl.signal });
+        const j = r.ok ? await r.json().catch(() => null) : null;
+        if (!j || !j.id) throw new Error('relay ' + r.status);
+        msg.textContent = ''; msg.className = 'msg'; done();
+      } catch (err) {
+        say(err && err.name === 'AbortError' ? 'The signal timed out. Check your connection and try again.' : "Couldn't reach the ship just now. Your email wasn't saved. Please try again in a minute.", true);
+      } finally {
+        clearTimeout(t); f.removeAttribute('aria-busy');
+        if (btn) { btn.disabled = false; btn.textContent = label; }
+      }
+    });
   }
 
   const yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();

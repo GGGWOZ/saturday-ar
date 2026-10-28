@@ -1,4 +1,4 @@
-/* Saturday: interactive Drop 008 experience. Pairs with js/saturday-free-experience.js. */
+/* Saturday: interactive Drop 001 experience. Pairs with js/saturday-free-experience.js. */
 @property --p{syntax:'<number>';inherits:true;initial-value:0}
 .fx{position:relative;padding:clamp(80px,10vw,130px) 0 clamp(60px,8vw,110px);overflow-x:clip}
 .fx-head{text-align:center}
