@@ -114,3 +114,106 @@
 .drop001-teaser .fine{margin-top:18px}
 /* t90: homepage shop grid = 3 tees + 2 wide cards (6-col track, no gaps) */
 @media (min-width:620px){.shop-grid.four.t3{grid-template-columns:repeat(6,1fr)}.shop-grid.four.t3 .pcard{grid-column:span 2}.shop-grid.four.t3 .pcard.wide{grid-column:span 3}}
+
+/* t126 (2026-10-28): shop lineup, bundles, Meet the Crew, friendlier nav */
+.foot-note{max-width:62ch;margin:6px auto 0;font-size:12px;color:var(--muted);text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chips a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--cream);border:1.5px solid rgba(212,168,75,.55);border-radius:999px;padding:9px 15px;background:rgba(212,168,75,.07)}
+.chips a:hover,.chips a:focus-visible{color:var(--ink);background:var(--gold-hi)}
+.info-row{display:grid;gap:10px;margin-top:24px;grid-template-columns:1fr}
+@media (min-width:700px){.info-row{grid-template-columns:repeat(3,1fr)}}
+.info-row span{padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(11,16,32,.55);font-size:14px;color:var(--muted)}
+.info-row b{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.shop-top{padding-bottom:10px}
+.shop-sec{padding:clamp(30px,5vw,60px) 0 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px;margin-bottom:20px;padding-top:18px;border-top:1px solid var(--line)}
+.sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(38px,4.6vw,60px);line-height:.95}
+.sec-head p{max-width:56ch;color:var(--muted);font-size:15px}
+.pcard .pc-status{padding:0 18px 16px;margin-top:-6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.pcard.soon .qrb{background:var(--gold-hi)}
+.pcard .pr{font-size:15px}
+.shop-fine{margin-top:22px;max-width:80ch}
+.list-fine{margin-top:14px;font-size:12px;color:var(--muted)}
+.pre-cta{justify-content:flex-start;margin-top:20px}
+.shop-cta{justify-content:center;margin-top:22px}
+/* bundles */
+.bx-grid{display:grid;gap:clamp(18px,2.4vw,30px);grid-template-columns:1fr}
+@media (min-width:820px){.bx-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1200px){.bx-grid{grid-template-columns:repeat(3,1fr)}}
+.bx{display:flex;flex-direction:column;border-radius:22px;overflow:hidden;border:2px solid #000;box-shadow:0 0 0 1px rgba(212,168,75,.4),6px 6px 0 #000;background:linear-gradient(160deg,#121a38,#0B1020 70%);scroll-margin-top:90px}
+.bx-thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:2px;background:#000;aspect-ratio:16/9}
+.bx-thumbs span{display:block;overflow:hidden;background:#0e1430}
+.bx-thumbs picture,.bx-thumbs img{display:block;width:100%;height:100%}
+.bx-body{display:flex;flex-direction:column;gap:10px;padding:20px 20px 22px;flex:1}
+.bx-body h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,3vw,40px);line-height:1}
+.bx-body p{color:var(--muted);font-size:15px}
+.bx-pitch{color:var(--teal-hi)!important;font-style:italic}
+.bx-soon{align-self:flex-start;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold-hi);border:1.5px solid #000;border-radius:999px;padding:5px 10px}
+.bx-lines{list-style:none;display:grid;gap:4px;margin:2px 0}
+.bx-lines li{font-size:14px;color:var(--cream);display:flex;gap:8px}
+.bx-lines li:before{content:"✦";color:var(--gold)}
+.bx-var{font-size:14px!important}.bx-var a{color:var(--gold-hi)}
+.bx-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-top:auto;padding-top:8px}
+.bx-price .amt{font-family:var(--display);font-size:44px;line-height:1;color:var(--gold-hi)}
+.bx-price .sep{font-size:13px;color:var(--muted)}
+.bx-ship,.bx-note{font-size:13px!important}
+.bx .btn{align-self:stretch;white-space:normal;text-align:center;padding:13px 18px;font-size:15px}
+.p-price .was{font-size:15px;color:var(--muted)}
+.p-price .save{font-family:var(--flash);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--gold-hi);border:2px solid #000;border-radius:999px;padding:5px 12px}
+.p-price .status{font-family:var(--flash);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.buy-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.buy-row .btn{padding:13px 22px;font-size:15px;white-space:normal;text-align:center}
+.buy-sub{font-size:13px;color:var(--muted);margin-top:10px}
+.b-lines{list-style:none;margin:26px 0 0;display:grid;gap:12px}
+.b-lines li{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:16px 18px;border-radius:16px;border:1.5px solid var(--line);background:rgba(11,16,32,.55)}
+.b-lines b{font-family:var(--display);font-weight:400;font-size:26px;line-height:1}
+.b-lines .amt{font-family:var(--flash);font-size:14px;color:var(--gold-hi);align-self:center}
+.b-lines small{grid-column:1/-1;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+.b-lines li.later{border-style:dashed;border-color:rgba(143,227,224,.45)}
+.b-lines li.later small{color:var(--gold)}
+.ships-two{margin-top:22px;padding:14px 18px;border-radius:14px;border:1px solid rgba(212,168,75,.45);background:rgba(212,168,75,.07);color:var(--cream);font-size:15px;line-height:1.5}
+.ships-two b{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;font-weight:600}
+.frame .tag.ph{left:auto;right:14px;top:auto;bottom:12px;color:var(--ink);background:var(--cream);text-shadow:none;border:1.5px solid #000;border-radius:999px;padding:4px 10px}
+.bundle-strip{margin-top:clamp(16px,2vw,26px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;padding:18px 22px;border-radius:20px;border:2px solid #000;box-shadow:0 0 0 1px rgba(212,168,75,.45),6px 6px 0 #000;background:linear-gradient(160deg,#121a38,#0B1020 70%);text-decoration:none;color:inherit}
+.bundle-strip b{font-family:var(--display);font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1}
+.bundle-strip small{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-top:6px}
+.bundle-strip .thumbs{display:flex;gap:8px}
+.bundle-strip .thumbs img{width:56px;height:56px;border-radius:12px;border:1.5px solid #000;object-fit:cover}
+.bundle-strip .go{font-family:var(--flash);font-size:13px;color:var(--gold-hi);white-space:nowrap}
+/* Meet the Crew */
+.crew-banner{margin-top:26px;position:relative;border-radius:var(--r);overflow:hidden;border:2px solid #000;box-shadow:0 0 0 1px rgba(212,168,75,.4),8px 8px 0 #000;background:#efe4d1}
+.crew-banner img{width:100%;height:auto;display:block}
+.crew-banner figcaption,.ca-tag{position:absolute;z-index:2;left:12px;bottom:10px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--cream);border:1.5px solid #000;border-radius:999px;padding:4px 10px}
+.ca-tag{top:12px;bottom:auto}
+.lore-page .media{position:relative}
+.crew-page .chapter{scroll-margin-top:80px}
+.crew-line{font-family:var(--display);font-size:clamp(22px,2.4vw,28px)!important;line-height:1.15;color:var(--gold-hi)!important}
+.crew-story{margin:18px 0 6px;padding:16px 18px;border-left:2px solid var(--teal);background:rgba(143,227,224,.06);border-radius:0 14px 14px 0}
+.crew-story span{display:block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.crew-story p{margin:0!important;color:var(--cream)!important}
+.crew-facts{margin-top:16px}
+.crew-world .box,.crew-teaser .box{border-radius:28px;border:2px solid #000;box-shadow:0 0 0 1px rgba(212,168,75,.45),10px 10px 0 #000;padding:clamp(26px,5vw,60px);background:radial-gradient(80% 90% at 85% 10%,rgba(143,227,224,.12),transparent 60%),linear-gradient(160deg,#121a38,#0B1020 60%,#0f3a44)}
+.crew-world{padding:clamp(40px,6vw,80px) 0 0}
+.crew-world .cta-row{justify-content:flex-start;margin-top:24px}
+.signals{list-style:none;display:grid;gap:12px;margin-top:22px;counter-reset:s}
+@media (min-width:900px){.signals{grid-template-columns:repeat(3,1fr)}}
+.signals li{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:rgba(11,16,32,.55)}
+.signals b{font-family:var(--display);font-weight:400;font-size:30px;line-height:1;color:var(--gold-hi)}
+.signals span{color:var(--muted);font-size:15px}
+.signals em{font-style:normal;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-top:auto}
+.signals em a{color:var(--gold-hi)}
+.crew-teaser .box{display:grid;gap:clamp(24px,4vw,56px);align-items:center}
+@media (min-width:900px){.crew-teaser .box{grid-template-columns:1fr 1.1fr}}
+.crew-teaser .cta-row{justify-content:flex-start;margin-top:22px}
+.crew-teaser .h2,.crew-world .h2{font-size:clamp(44px,5.4vw,76px)}
+.crew-banner{max-width:1040px;margin-left:auto;margin-right:auto}
+.crew-teaser .crew-pic{display:block;border-radius:18px;overflow:hidden;border:2px solid #000;box-shadow:6px 6px 0 #000;background:#efe4d1}
+.crew-teaser .crew-pic img{width:100%;height:auto;display:block}
+/* mobile menu: show every shop link except the duplicate "Shop all", and let a long menu scroll */
+@media (max-width:1099px){
+  .nav.open ul.sub li:nth-child(-n+2){display:list-item;list-style:none}
+  .nav.open ul.sub li:first-child{display:none}
+  .nav.open>.wrap>nav>ul{max-height:calc(100vh - 68px);max-height:calc(100dvh - 68px);overflow-y:auto;overscroll-behavior:contain}
+}
+@media (min-width:1100px) and (max-width:1279px){.nav ul{gap:16px}.nav ul a{letter-spacing:.14em}}
+@media (max-width:619px){.shop-grid.four .pcard .tx{padding:14px 16px 14px}.bundle-strip .thumbs{display:none}}
