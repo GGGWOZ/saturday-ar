@@ -237,7 +237,7 @@ footer nav a:hover{color:var(--teal)}
   .hero-glow{display:none}
 }
 
-/* ---------- additions: 008, AR/QR, Free Drop ---------- */
+/* ---------- additions: 008, AR/QR, Drop 008 ---------- */
 a.card,a.frame{display:block;text-decoration:none;color:inherit}
 .card .lbl{color:var(--cream)}
 .page-top{padding-top:clamp(110px,12vw,150px)}
@@ -279,7 +279,7 @@ a.card,a.frame{display:block;text-decoration:none;color:inherit}
 .steps li:before{content:counter(s,decimal-leading-zero);font-family:var(--flash);color:var(--ink);background:var(--gold);border:2px solid #000;border-radius:50%;width:40px;height:40px;display:grid;place-items:center;font-size:13px;box-shadow:2px 2px 0 #000}
 .steps b{color:var(--teal)}
 
-/* Free drop teaser + page */
+/* Drop 008 teaser + page */
 .free-teaser .box{display:grid;gap:30px;align-items:center;border-radius:28px;padding:clamp(26px,5vw,60px);border:1.5px dashed rgba(212,168,75,.6);background:linear-gradient(160deg,rgba(18,26,56,.9),rgba(15,58,68,.55))}
 @media (min-width:900px){.free-teaser .box{grid-template-columns:1fr 1fr}}
 .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}

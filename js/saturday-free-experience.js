@@ -1,4 +1,4 @@
-/* Saturday Free Drop experience: kinetic type, pinned scroll sequence, foil flip cards,
+/* Saturday Drop 008 experience: kinetic type, pinned scroll sequence, foil flip cards,
    sticker toy with PNG export, live QR teaser and the Starter Pack unboxing.
    Vanilla JS, each part initialises lazily when it nears the viewport. No tracking, no network calls. */
 (() => {
@@ -280,7 +280,7 @@
         style = ORDER[(ORDER.indexOf(style) + 1) % ORDER.length];
         styleBtn.textContent = 'Style: ' + window.SaturdayQR.STYLES[style].name; draw(true);
       });
-      // On the Free Drop page the full maker is right here: hand the link over without a reload.
+      // On the Drop 008 page the full maker is right here: hand the link over without a reload.
       link.addEventListener('click', () => {
         const full = document.getElementById('qrUrl');
         if (!full) return;
