@@ -148,3 +148,6 @@
 .crew-mini-tx b{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1}
 .crew-mini-tx small{color:var(--muted);font-size:14px}
 #signals,#unlocked,#drop,#bundles,#in-the-box,#shop,#list,#crew{scroll-margin-top:80px}
+/* t139: the three sets sit in one row; keep a gap under the honest note */
+.hbx-grid.three{margin-top:var(--s4)}
+@media (min-width:900px){.hbx-grid.three{grid-template-columns:repeat(3,1fr)}.hbx-grid.three .hbx:first-child{grid-column:auto}.hbx-grid.three .hbx:first-child .hbx-im img{object-position:50% 42%}}

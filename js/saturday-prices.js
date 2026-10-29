@@ -6,6 +6,29 @@
 window.SATURDAY_PRICES = {
   currency: 'A$',
   products: {
+      "tee-admiral": {
+          "name": "Admiral E. Bird Tee",
+          "price": 59
+      },
+      "tee-ozzie": {
+          "name": "King Ozzie Tee",
+          "price": 59
+      },
+      "set-alley": {
+          "name": "Alley Set",
+          "price": 115,
+          "items": ["tee-alley", "hat-alley-dad-cap", "stickers-holo-pack"]
+      },
+      "set-admiral": {
+          "name": "Admiral Set",
+          "price": 115,
+          "items": ["tee-admiral", "hat-alley-dad-cap", "stickers-holo-pack"]
+      },
+      "set-ozzie": {
+          "name": "Ozzie Set",
+          "price": 115,
+          "items": ["tee-ozzie", "hat-alley-dad-cap", "stickers-holo-pack"]
+      },
       "tee-alley": {
           "name": "Alley Tee",
           "price": 59
