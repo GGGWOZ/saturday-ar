@@ -26,6 +26,26 @@ window.SATURDAY_PRICES = {
           "name": "Logo Hoodie",
           "price": 99
       },
+      "logo-tee-heavy": {
+          "name": "Heavyweight Logo Tee",
+          "price": 59
+      },
+      "hemp-tee": {
+          "name": "Hemp Tee",
+          "price": 59
+      },
+      "phone-case": {
+          "name": "Signal Case",
+          "price": 45
+      },
+      "bottle": {
+          "name": "Signal Bottle",
+          "price": 59
+      },
+      "plush-crew-25": {
+          "name": "Crew Plush (25 cm)",
+          "price": 35
+      },
       "hat-alley-dad-cap": {
           "name": "Alley Dad Cap",
           "price": 55
