@@ -1,17 +1,16 @@
 /* Saturday prices: the ONE place to change them (Australian dollars, GST included).
-   Checkout is NOT connected yet, so nothing on the site takes payment. Every "buy" action is the
-   pre-order list (the existing encrypted sign-up form). When checkout is wired, add a checkout URL per product
-   here and switch the buttons in the pages. Any element with data-price="<id>" shows that product's price.
+   Checkout provider settings live in js/saturday-checkout-config.js (cart: js/saturday-cart.js).
+   Any element with data-price="<id>" shows that product's price.
    Prices are also written into the HTML as a no-JS fallback. */
 window.SATURDAY_PRICES = {
   currency: 'A$',
   products: {
       "tee-admiral": {
-          "name": "Admiral E. Bird Tee",
+          "name": "Admiral E. Byrd Tee",
           "price": 59
       },
       "tee-ozzie": {
-          "name": "King Ozzie Tee",
+          "name": "King G Tee",
           "price": 59
       },
       "set-alley": {
@@ -25,7 +24,7 @@ window.SATURDAY_PRICES = {
           "items": ["tee-admiral", "hat-alley-dad-cap", "stickers-holo-pack"]
       },
       "set-ozzie": {
-          "name": "Ozzie Set",
+          "name": "King G Set",
           "price": 115,
           "items": ["tee-ozzie", "hat-alley-dad-cap", "stickers-holo-pack"]
       },
@@ -54,7 +53,7 @@ window.SATURDAY_PRICES = {
           "price": 59
       },
       "hemp-tee": {
-          "name": "Hemp Tee",
+          "name": "Natural Tee",
           "price": 59
       },
       "phone-case": {
@@ -86,7 +85,7 @@ window.SATURDAY_PRICES = {
           "price": 45
       },
       "hemp-trucker": {
-          "name": "Hemp Trucker",
+          "name": "Trucker Cap",
           "price": 59
       },
       "stickers-holo-pack": {
@@ -114,11 +113,11 @@ window.SATURDAY_PRICES = {
           "price": 24
       },
       "toy-admiral": {
-          "name": "Admiral E. Bird",
+          "name": "Admiral E. Byrd",
           "price": 24
       },
       "toy-ozzie": {
-          "name": "King Ozzie",
+          "name": "King G",
           "price": 24
       },
       "keyring-alley": {

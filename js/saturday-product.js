@@ -2,7 +2,7 @@
 (() => {
   const btns = [...document.querySelectorAll('.opt[data-pick]')];
   if (!btns.length) return;
-  const TITLES = { full: '001 — Hemp Camp Collar Shirt · Saturday', qr: '001 QR — Hemp Camp Collar Shirt · Saturday' };
+  const TITLES = { full: '001 — Camp Collar Shirt · Saturday', qr: '001 QR — Camp Collar Shirt · Saturday' };
   const pickFromHash = () => (/^#qr/.test(location.hash) ? 'qr' : 'full');
   const show = (opt, push) => {
     document.querySelectorAll('[data-opt]').forEach(el => { el.hidden = el.dataset.opt !== opt; });

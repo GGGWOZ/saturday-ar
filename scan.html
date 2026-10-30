@@ -3,19 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0B1020">
+<meta name="theme-color" content="#0B1433">
 
-<title>Saturday — Scan to Reveal</title>
-<meta name="description" content="Scan a Saturday tee or sticker and meet Alley, the Saturday alien, Saturday Original 001. Tap to scan, or use your camera on any QR code.">
-<meta property="og:title" content="Saturday — Scan to Reveal">
-<meta property="og:description" content="Scan a Saturday tee or sticker and meet Alley, the Saturday alien, Saturday Original 001. Tap to scan, or use your camera on any QR code.">
-<meta property="og:image" content="assets/shop/saturday-alley-tee-white-hero.jpg">
-<link rel="icon" type="image/svg+xml" href="assets/saturday-alien-mark.svg?v=20261029c">
-<link rel="preload" href="assets/fonts/saturday-pirata-one.woff2" as="font" type="font/woff2" crossorigin>
+<title>Scan to Reveal · Saturday for the Win</title>
+<meta name="description" content="Scan a Saturday for the Win tee or sticker and meet Alley the Tide-Glider, roster No. 01 and the surf-and-ski legend. Tap to scan, or use your camera on any QR code.">
+<meta property="og:title" content="Scan to Reveal · Saturday for the Win">
+<meta property="og:description" content="Scan a Saturday for the Win tee or sticker and meet Alley the Tide-Glider, roster No. 01 and the surf-and-ski legend. Tap to scan, or use your camera on any QR code.">
+<meta property="og:image" content="https://saturdayforthewin.com/assets/shop/saturday-alley-tee-white-hero.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png?v=20261030r">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo/icon-192.png?v=20261030r">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/logo/apple-touch-icon.png?v=20261030r">
+<link rel="preload" href="assets/fonts/saturday-oswald.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/saturday-graduate.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/saturday-space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/saturday.css?v=20261029c">
-<link rel="stylesheet" href="css/saturday-scan.css?v=20261029c">
-<link rel="stylesheet" href="css/saturday-shop.css?v=20261029c">
+<link rel="stylesheet" href="css/saturday.css?v=20261030r">
+<link rel="stylesheet" href="css/saturday-scan.css?v=20261030r">
+<link rel="stylesheet" href="css/saturday-shop.css?v=20261030r">
+<link rel="stylesheet" href="css/saturday-sports.css?v=20261030r">
+<link rel="stylesheet" href="css/saturday-cart.css?v=20261030r">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -25,19 +30,18 @@
 <div class="grain" aria-hidden="true"></div>
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Saturday home">
-      <img src="assets/saturday-alley-head.svg?v=20261029c" alt="" width="30" height="36">
-      <img class="wm" src="assets/saturday-wordmark-gold.svg?v=20261029c" alt="Saturday" width="84" height="26">
+    <a class="brand" href="index.html" aria-label="Saturday for the Win home">
+      <picture><source srcset="assets/logo/saturday-infinity-logo-header.webp?v=20261030r" type="image/webp"><img class="logo" src="assets/logo/saturday-infinity-logo-header.png?v=20261030r" alt="Saturday" width="75" height="44"></picture>
     </a>
     <nav aria-label="Main">
       <ul>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="characters.html">Meet the Crew</a></li>
+        <li><a href="shop.html">Kit Room</a></li>
+        <li><a href="characters.html">The Roster</a></li>
         <li><a href="scan.html" class="cur" aria-current="page">Scan</a></li>
         <li class="m-only"><a href="index.html#list">Join the list</a></li>
       </ul>
     </nav>
-    <a class="nav-crew" href="characters.html">Meet the Crew</a>
+    <a class="nav-crew" href="characters.html">The Roster</a>
     <a class="btn btn-ghost" href="index.html#list">Join the list</a>
   </div>
 </header>
@@ -52,17 +56,18 @@
       <div class="scan-shade"></div>
       <span class="cam-badge">Camera live</span>
       <div class="scan-top">
-        <span class="eyebrow">Saturday · Scan to Reveal</span>
-        <h1 id="scan-title" class="holo-text">Scan the shirt.</h1>
-        <p>Every Saturday tee and sticker carries a signal. Lock on, scan, and see who answers.</p>
+        <span class="eyebrow">Game day · Scan to Reveal</span>
+        <h1 id="scan-title" class="holo-text">Scan the jersey.</h1>
+        <p>Every Saturday tee and sticker carries a signal. Lock on, scan, and see which legend runs out.</p>
       </div>
       <div class="reticle" aria-hidden="true">
         <span class="br tl"></span><span class="br tr"></span><span class="br bl"></span><span class="br brr"></span>
         <span class="sweep"></span><span class="dot"></span>
         <svg class="ring" viewBox="0 0 100 100"><defs><linearGradient id="scan-ring-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8FE3E0"/><stop offset=".6" stop-color="#E8FBFA"/><stop offset="1" stop-color="#F3D58A"/></linearGradient></defs><circle class="trk" cx="50" cy="50" r="48"/><circle class="bar" cx="50" cy="50" r="48"/></svg>
-        <span class="lbl">Scan the shirt</span>
+        <span class="lbl">Scan the jersey</span>
       </div>
       <canvas class="scan-fx" aria-hidden="true"></canvas>
+      <!-- TODO(sports-draft): the pop-up Alley is drawn in code by js/saturday-alley.js (original tux Alley). Swap for the Tide-Glider sport art once a vector version exists. -->
       <div class="alley-wrap"><div class="alley-float"><div class="alley-pop"><div class="alley-spin"><div class="alley-trick"></div></div></div></div><button class="alley-btn" type="button" aria-label="Tap Alley for a trick"></button></div>
       <div class="scan-controls">
         <div class="row">
@@ -77,30 +82,30 @@
       </div>
       <aside class="found" aria-live="polite" aria-label="You found Alley">
         <span class="no">001</span>
-        <span class="k">Signal received</span>
+        <span class="k">Signal received · Roster No. 01</span>
         <h2 class="holo-text">You found <span data-alley-name>Alley</span></h2>
-        <p class="meta">The Saturday Alien · Original 001</p>
-        <p class="l">Rides snow at dawn, surf at dusk. The gold ring is how he finds his way home, and how he sends the drops back: Signal 001 is out now.</p>
+        <p class="meta">The Tide-Glider · Surf &amp; ski legend</p>
+        <p class="l">Rides snow at dawn, surf at dusk, and wears his gold halo like a trophy. It’s how he finds his way home, and how he sends the drops back: Drop 001 kicks off 11.11.</p>
         <div class="acts"><button class="btn btn-holo" type="button" data-act="again">Scan again</button><button class="btn btn-ghost" type="button" data-act="shot">Save screenshot</button></div>
-        <div class="links"><a href="shop.html">Shop the tees →</a><a href="index.html#drop">Drop 001 countdown →</a></div>
+        <div class="links"><a href="shop.html">Into the Kit Room →</a><a href="index.html#drop">Drop 001 scoreboard →</a></div>
         <p class="tap">Psst: tap <span data-alley-name>Alley</span>.</p>
       </aside>
     </div>
   </section>
   <section class="scan-lore" aria-labelledby="sl-title">
     <div class="wrap grid">
-      <div class="shot rv"><picture><source srcset="assets/shop/saturday-alley-tee-white.webp?v=20261029c" type="image/webp"><img src="assets/shop/saturday-alley-tee-white.jpg?v=20261029c" alt="The Alley Tee: a white unisex tee printed with Alley, the Saturday alien head with its gold ring, with a small Saturday QR on the upper back" width="900" height="1200" loading="lazy"></picture></div>
+      <div class="shot rv"><picture><source srcset="assets/shop/saturday-alley-tee-white.webp?v=20261030r" type="image/webp"><img src="assets/shop/saturday-alley-tee-white.jpg?v=20261030r" alt="The Alley Tee: a white unisex tee printed with Alley, the Saturday alien head with its gold ring, with a small Saturday QR on the upper back" width="900" height="1200" loading="lazy"></picture></div>
       <div class="rv">
-        <span class="eyebrow">The Story</span>
-        <h2 class="h2" id="sl-title"><span class="holo-text">Who just showed up?</span></h2>
-        <p class="lede">That's <strong data-alley-name>Alley</strong>, the Saturday alien. Lives on the seam where the surf meets the sky, rides snow at dawn and surf at dusk, and steers by that gold ring.</p>
-        <p class="lore-quote">“To most people a QR code is a square of dots. To Alley it's a signal flare.”</p>
+        <span class="eyebrow">Player profile · No. 01</span>
+        <h2 class="h2" id="sl-title"><span class="holo-text">Who just ran out?</span></h2>
+        <p class="lede">That's <strong data-alley-name>Alley</strong> the Tide-Glider, the surf-and-ski legend. Lives on the seam where the surf meets the sky, rides snow at dawn and surf at dusk, and steers by that gold halo.</p>
+        <p class="lore-quote">“To most people a QR code is a square of dots. To Alley it's the starting whistle.”</p>
         <ul class="how">
           <li><b>01</b><span>Every Saturday tee and sticker carries a small Saturday QR.</span></li>
           <li><b>02</b><span>Scan it with your phone camera. It opens this page.</span></li>
-          <li><b>03</b><span>Scan the code. Alley answers. Tap the head for a trick.</span></li>
+          <li><b>03</b><span>Scan the code. Alley runs out. Tap the head for a trick.</span></li>
         </ul>
-        <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-holo" href="shop.html">Shop the tees</a><a class="btn btn-ghost" href="characters.html">Meet the Crew</a></div>
+        <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-holo" href="shop.html">Into the Kit Room</a><a class="btn btn-ghost" href="characters.html">Meet the Roster</a></div>
       </div>
     </div>
   </section>
@@ -108,15 +113,18 @@
 <footer>
   <svg class="waves" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 Q75 0 150 40 T300 40 T450 40 T600 40 T750 40 T900 40 T1050 40 T1200 40 V70 H0Z" fill="#0b6c7d" opacity=".5"/><path d="M0 55 Q75 25 150 55 T300 55 T450 55 T600 55 T750 55 T900 55 T1050 55 T1200 55 V70 H0Z" fill="#0f3a44"/></svg>
   <div class="wrap">
-    <img class="wm" src="assets/saturday-wordmark.svg?v=20261029c" alt="Saturday" width="340" height="110" loading="lazy">
-    <p class="banner">Where the surf meets the sky.</p>
-    <nav class="row" aria-label="Footer"><a href="shop.html">Shop</a><a href="characters.html">Meet the Crew</a><a href="scan.html">Scan</a><a href="index.html#list">Join the list</a></nav>
-    <p class="foot-note">Prices in Australian dollars (A$), GST included. Products marked “Coming soon” aren’t on sale yet: join the list and we’ll tell you first.</p>
-    <div class="row"><span>Saturday</span><span class="g">✦</span><span>Gold Coast, Australia</span><span class="g">✦</span><span>© <span id="yr">2026</span></span></div>
+    <picture><source srcset="assets/logo/saturday-infinity-logo-900.webp?v=20261030r" type="image/webp"><img class="wm logo-foot" src="assets/logo/saturday-infinity-logo-900.png?v=20261030r" alt="Saturday" width="900" height="528" loading="lazy"></picture>
+    <p class="banner">Game day, every day</p>
+    <nav class="row" aria-label="Footer"><a href="shop.html">Kit Room</a><a href="characters.html">The Roster</a><a href="scan.html">Scan</a><a href="index.html#list">Join the list</a><a href="cart.html">Cart</a><a href="policies.html">Shipping &amp; returns</a></nav>
+    <p class="foot-note">Prices in Australian dollars (A$), GST included. Until checkout opens, nothing on this site takes payment: join the list and we’ll tell you first. <a href="policies.html">Shipping, returns &amp; privacy</a></p>
+    <div class="row"><span>Saturday for the Win</span><span class="g">✦</span><span>Surf to snow · Gold Coast, Australia</span><span class="g">✦</span><span>© <span id="yr">2026</span></span></div>
   </div>
 </footer>
-<script src="js/saturday.js?v=20261029c" defer></script>
-<script src="js/saturday-alley.js?v=20261029c" defer></script>
-<script src="js/saturday-scan.js?v=20261029c" defer></script>
+<script src="js/saturday-prices.js?v=20261030r" defer></script>
+<script src="js/saturday-checkout-config.js?v=20261030r" defer></script>
+<script src="js/saturday-cart.js?v=20261030r" defer></script>
+<script src="js/saturday.js?v=20261030r" defer></script>
+<script src="js/saturday-alley.js?v=20261030r" defer></script>
+<script src="js/saturday-scan.js?v=20261030r" defer></script>
 </body>
 </html>

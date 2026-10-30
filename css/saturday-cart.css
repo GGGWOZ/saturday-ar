@@ -1,0 +1,88 @@
+/* Saturday for the Win: tee-first hero, size picker, cart, NFT teaser, policies. Loaded after saturday-sports.css. */
+/* header cart link */
+.nav .cart-link{display:inline-flex;align-items:center;gap:6px;color:var(--cream);text-decoration:none;font-family:var(--display);font-weight:600;font-size:13px;padding:8px 10px;border:1.5px solid rgba(201,162,74,.55);border-radius:6px}
+.nav .cart-link b{font-family:var(--num);color:var(--gold-hi);font-weight:400;min-width:1ch;text-align:center}
+.nav .cart-link[hidden]{display:none}
+.nav .cart-link:hover{border-color:var(--gold-hi)}
+
+/* HERO: the tees first */
+.hero-tee{min-height:auto;display:block;text-align:left;padding:104px 0 56px}
+.hero-tee .ht-grid{display:grid;gap:28px;align-items:center;grid-template-columns:1fr}
+@media (min-width:980px){.hero-tee .ht-grid{grid-template-columns:5fr 7fr;gap:44px}.hero-tee{padding:120px 0 70px}}
+.hero-tee .ht-copy{position:relative;z-index:2}
+.hero-tee .ht-logo{display:flex;align-items:center;gap:14px;margin:0 0 14px}
+.hero-tee .ht-logo img{width:120px;height:auto;filter:drop-shadow(0 4px 16px rgba(0,0,0,.6))}
+.hero-tee .ht-logo span{font-family:var(--display);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-hi);font-size:15px}
+.hero-tee h1{margin:10px 0 14px;width:auto;font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:.88;font-size:clamp(48px,8vw,104px);letter-spacing:.005em}
+.hero-tee .sub{margin:0 0 22px;max-width:44ch;text-transform:none;letter-spacing:0;font-family:inherit;font-weight:400;color:var(--muted);font-size:clamp(16px,1.6vw,19px)}
+.hero-tee .cta-row{justify-content:flex-start}
+.hero-tee .ht-price{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;margin:0 0 20px;font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--cream)}
+.hero-tee .ht-price b{font-family:var(--num);font-weight:400;color:var(--gold-hi);font-size:30px;letter-spacing:0}
+.hero-tee .ht-shot{position:relative;margin:0;border-radius:14px;overflow:hidden;border:2px solid rgba(201,162,74,.55);box-shadow:0 0 0 6px rgba(201,162,74,.07),0 30px 80px rgba(0,0,0,.5)}
+.hero-tee .ht-shot img{display:block;width:100%;height:auto}
+.hero-tee .ht-shot figcaption{position:absolute;left:12px;bottom:10px;font-family:var(--display);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,234,219,.8);background:rgba(11,20,51,.7);padding:4px 8px;border-radius:4px}
+.hero-tee .ht-picks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 0;padding:0;list-style:none}
+.hero-tee .ht-picks a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;padding:10px 6px;border:1.5px solid rgba(201,162,74,.45);border-radius:10px;background:rgba(11,20,51,.55);color:var(--cream);text-align:center}
+.hero-tee .ht-picks a:hover{border-color:var(--gold-hi)}
+.hero-tee .ht-picks b{font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;font-size:15px}
+.hero-tee .ht-picks small{font-family:var(--num);color:var(--gold-hi);font-size:13px}
+.hero-tee .ht-picks span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-family:var(--display)}
+.hero-tee .honest{margin-top:16px}
+
+/* size picker + buy box */
+.buy{margin:22px 0 8px}
+.buy .sizes{border:0;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.buy .sizes legend{width:100%;margin:0 0 8px;font-family:var(--display);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-hi)}
+.buy .size-guide{margin-left:10px;color:var(--teal);letter-spacing:.06em;text-transform:none;font-weight:400}
+.buy .sz{position:relative}
+.buy .sz input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.buy .sz span{display:inline-grid;place-items:center;min-width:52px;height:44px;padding:0 10px;border:2px solid rgba(201,162,74,.5);border-radius:6px;font-family:var(--display);font-weight:600;letter-spacing:.08em;color:var(--cream)}
+.buy .sz input:checked+span{background:var(--gold);color:var(--ink);border-color:var(--gold-hi)}
+.buy .sz input:focus-visible+span{outline:2px solid var(--teal);outline-offset:2px}
+.buy-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.qty{display:inline-flex;align-items:center;border:2px solid rgba(201,162,74,.5);border-radius:6px;overflow:hidden}
+.qty button{width:40px;height:44px;border:0;background:rgba(201,162,74,.1);color:var(--cream);font-size:20px;cursor:pointer}
+.qty input,.qty output{width:44px;height:44px;border:0;background:transparent;color:var(--cream);text-align:center;font-family:var(--num);font-size:16px;display:inline-grid;place-items:center;-moz-appearance:textfield}
+.qty input::-webkit-inner-spin-button{display:none}
+.buy-note{margin:12px 0 0;font-size:14px;color:var(--muted);max-width:52ch}
+.buy-note a{color:var(--teal)}
+.hbx .buy{margin:14px 0 4px}.hbx .buy .sz span{min-width:44px;height:40px}
+
+/* cart page */
+.cart-page{padding:120px 0 40px}
+.cart-page .wrap{max-width:900px}
+.cart-lines{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px}
+.cart-lines li{display:grid;grid-template-columns:72px 1fr auto;grid-template-areas:"im tx pr" "im q rm";gap:8px 14px;align-items:center;padding:12px;border:1.5px solid rgba(201,162,74,.4);border-radius:12px;background:rgba(11,20,51,.6)}
+@media (min-width:700px){.cart-lines li{grid-template-columns:90px 1fr auto auto auto;grid-template-areas:"im tx q pr rm"}}
+.cart-lines img{grid-area:im;width:100%;height:auto;border-radius:8px;display:block}
+.cart-lines li>a{grid-area:im}
+.cl-tx{grid-area:tx;display:flex;flex-direction:column;gap:3px}
+.cl-tx b{font-family:var(--display);text-transform:uppercase;letter-spacing:.03em;font-size:18px}
+.cl-tx span,.cl-tx small{color:var(--muted);font-size:14px}
+.cl-tx .btn{margin-top:6px;align-self:flex-start}
+.cart-lines .qty{grid-area:q;justify-self:start}
+.cl-pr{grid-area:pr;font-family:var(--num);color:var(--gold-hi);font-size:18px;justify-self:end}
+.cart-lines [data-rm]{grid-area:rm;justify-self:end}
+.cart-tot{display:flex;justify-content:space-between;align-items:baseline;margin:20px 0 4px;padding:16px 4px 0;border-top:2px solid rgba(201,162,74,.4);font-family:var(--display);text-transform:uppercase;letter-spacing:.12em}
+.cart-tot b{font-family:var(--num);font-size:28px;color:var(--gold-hi);letter-spacing:0}
+.cart-foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+.cart-foot .fine{flex-basis:100%;margin:4px 0 0}
+.cart-foot .err{color:#ffb4a8}
+.btn[disabled]{opacity:.55;cursor:not-allowed;box-shadow:none}
+.cart-empty{margin:24px 0;font-size:18px}.cart-empty a{color:var(--teal)}
+
+/* NFT teaser */
+.nft-sec{padding:70px 0}
+.nft-box{display:grid;gap:26px;align-items:center;padding:clamp(22px,4vw,44px);border:2px solid rgba(95,227,214,.45);border-radius:14px;background:linear-gradient(160deg,rgba(95,227,214,.07),rgba(11,20,51,.9) 60%)}
+@media (min-width:900px){.nft-box{grid-template-columns:6fr 5fr}}
+.nft-box img{width:100%;height:auto;border-radius:10px;display:block}
+.nft-facts{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 18px;padding:0;list-style:none}
+.nft-facts li{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:7px 12px;border:1.5px solid rgba(201,162,74,.5);border-radius:6px;color:var(--cream)}
+.nft-facts li b{font-family:var(--num);color:var(--gold-hi);font-weight:400;margin-right:6px}
+
+/* policies page */
+.policy{padding:120px 0 40px}.policy .wrap{max-width:820px}
+.policy h2{font-family:var(--display);text-transform:uppercase;font-size:28px;margin:34px 0 10px;color:var(--gold-hi)}
+.policy p,.policy li{color:var(--cream);line-height:1.6}
+.policy .draft-flag{padding:14px 16px;border:2px dashed var(--gold);border-radius:10px;background:rgba(201,162,74,.08)}
+@media (max-width:979px){.hero-tee .ht-shot{order:-1}}

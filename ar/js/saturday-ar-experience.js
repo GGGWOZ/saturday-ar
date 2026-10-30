@@ -1,5 +1,5 @@
 // saturday-ar-experience.js — Saturday AR Experience
-  // Set this to the live Shopify product URL (e.g. https://YOURSTORE.com/products/hologram-hemp-shirt)
+  // Set this to the live Shopify product URL (e.g. https://YOURSTORE.com/products/alley-tee)
   const SHOP_URL = '';
   const shop = document.getElementById('shop');
   if (SHOP_URL) shop.href = SHOP_URL; else { shop.textContent = 'Shop · coming soon'; shop.removeAttribute('href'); shop.style.opacity = .55; }

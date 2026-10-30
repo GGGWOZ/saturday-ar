@@ -27,12 +27,12 @@ Prices are the planned retail prices in A$, GST included, as they were on the si
 | Logo Tee | Saturday wordmark · Navy | A$49 | shop.html #tees |
 | Logo Hoodie | Saturday wordmark · Navy | A$99 | shop.html #tees |
 | Heavyweight Logo Tee | Heavyweight cotton · Navy | A$59 | shop.html #tees |
-| Hemp Tee | Hemp-cotton blend · Natural (no hemp supplier) | A$59 | shop.html #tees |
+| Natural Tee | Cotton blend · Natural (supplier TBC) | A$59 | shop.html #tees |
 | Alley Dad Cap (standalone card) | Embroidered · Navy. **Still live inside the three sets** | A$55 | shop.html #hats, hats.html |
 | 001 Snapback | Embroidered · Navy | A$59 | shop.html #hats, hats.html |
 | Holo Bucket Hat | Printed · scannable QR | A$69 | shop.html #hats, hats.html |
 | Signal Beanie | Cuffed rib knit · Navy | A$45 | shop.html #hats, hats.html |
-| Hemp Trucker | Embroidered · hemp front (no hemp supplier) | A$59 | shop.html #hats |
+| Trucker Cap | Embroidered · canvas front (supplier TBC) | A$59 | shop.html #hats |
 | Holo Sticker Pack (standalone card) | Five holo die-cuts. **Still live inside the three sets** | A$12 | shop.html #accessories, stickers.html |
 | Canvas Tote | Cream canvas · navy wordmark | A$45 | shop.html #accessories |
 | Surf-to-Snow Towel | 76 × 152 cm beach towel | A$79 | shop.html #accessories |
@@ -56,8 +56,8 @@ Prices are the planned retail prices in A$, GST included, as they were on the si
 |---|---|---|---|
 | B1 Signal 001 Tee + Alley | Alley Tee, 001 Tee or 001 QR Tee + plush keychain | A$79 (A$83) | index.html #bundles, bundles.html#b1 |
 | B2 Signal Starter | Logo Tee + acrylic keyring + Holo Sticker Pack | A$69 (A$78) | index.html #bundles, bundles.html#b2 |
-| B3 Surf-to-Snow | Logo Hoodie + Hemp Trucker + plush keychain | A$159 (A$182) | index.html #bundles, bundles.html#b3 |
-| B4 Crew Gift Box | Logo Tee + Canvas Tote + Hemp Trucker + keyring + Holo Sticker Pack | A$149 (A$182) | index.html #bundles, bundles.html#b4 |
+| B3 Surf-to-Snow | Logo Hoodie + Trucker Cap + plush keychain | A$159 (A$182) | index.html #bundles, bundles.html#b3 |
+| B4 Crew Gift Box | Logo Tee + Canvas Tote + Trucker Cap + keyring + Holo Sticker Pack | A$149 (A$182) | index.html #bundles, bundles.html#b4 |
 | B5 Signal 002 Peak Pack | Signal Beanie + Alley Dad Cap + Admiral plush keychain + Holo Sticker Pack | A$119 (A$136) | index.html #bundles, bundles.html#b5 |
 | B6 Beach-to-Peak Towel Pack | Towel + plush keychain + Holo Sticker Pack | A$105 (A$115) | index.html #bundles, bundles.html#b6 |
 | B7 Saturday Ring Trio | Three plush keychains + Buzz pin + Holo Sticker Pack | A$85 (A$99) | index.html #bundles, bundles.html#b7 |
